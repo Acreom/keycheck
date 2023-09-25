@@ -1,4 +1,5 @@
 <template>
+  <Backdrop />
   <div>
     <AppHeader />
     <slot />

@@ -3,6 +3,8 @@ const app = {
   name: "Obsidian",
   icon: "/app-icons/obsidian.png",
   homepage: "https://obsidian.md",
+  description:
+    'Obsidian is a note-taking and knowledge management software tool that is designed for individuals who want to create a digital knowledge base and connect ideas and information in a structured way. It is often described as a "second brain" or "thought organizer" because it allows users to build a network of interconnected notes, thoughts, and references.',
   shortcuts: {
     "cmdOrCtrl+W": "Close current tab",
     "cmdOrCtrl+shift+W": "Close window",
@@ -26,8 +28,8 @@ const app = {
     "CmdOrCtrl+8": "go to tab #8",
     "CmdOrCtrl+G": "Open graph view",
     "CmdOrCtrl+K": "Insert markdown link",
-    "Alt+CmdOrCtrl+LeftArrow": "Navigate back",
-    "Alt+CmdOrCtrl+RightArrow": "Navigate forward",
+    "Alt+CmdOrCtrl+left": "Navigate back",
+    "Alt+CmdOrCtrl+right": "Navigate forward",
     "CmdOrCtrl+T": "New tab",
     F1: "Open help",
     "CmdOrCtrl+Enter": "Open link under cursor in new tab",

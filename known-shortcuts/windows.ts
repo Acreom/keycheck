@@ -3,6 +3,8 @@ const app = {
   name: "Windows",
   icon: "/app-icons/windows.png",
   homepage: "https://microsoft.com/windows",
+  description:
+    "Windows is a family of operating systems developed by Microsoft Corporation. These operating systems are designed to run on a wide range of personal computers, servers, and other computing devices. Windows is one of the most widely used operating systems globally, known for its user-friendly interface and compatibility with a vast array of software and hardware.",
   globals: {
     "Ctrl+X": "Cut the selected item",
     "Ctrl+C": "Copy the selected item",
@@ -22,8 +24,8 @@ const app = {
     "Alt+Esc": "Cycle through items in the order in which they were opened",
     "Alt+Enter": "Display properties for the selected item",
     "Alt+space": "Open the shortcut menu for the active window",
-    "Alt+arrowLeft": "Go back",
-    "Alt+arrowRight": "Go forward",
+    "Alt+left": "Go back",
+    "Alt+right": "Go forward",
     "Alt+pgUp": "Move up one screen",
     "Alt+pgDown": "Move down one screen",
     "Ctrl+F4": "Close the active document ",
@@ -31,11 +33,10 @@ const app = {
     "Ctrl+D": "Delete the selected item and move it to the Recycle Bin",
     "Ctrl+R": "Refresh the active window",
     "Ctrl+Y": "Redo an action",
-    "Ctrl+arrowRight": "Move the cursor to the beginning of the next word",
-    "Ctrl+arrowLeft": "Move the cursor to the beginning of the previous word",
-    "Ctrl+arrowDown": "Move the cursor to the beginning of the next paragraph",
-    "Ctrl+arrowUp":
-      "Move the cursor to the beginning of the previous paragraph",
+    "Ctrl+right": "Move the cursor to the beginning of the next word",
+    "Ctrl+left": "Move the cursor to the beginning of the previous word",
+    "Ctrl+down": "Move the cursor to the beginning of the next paragraph",
+    "Ctrl+up": "Move the cursor to the beginning of the previous paragraph",
     "Ctrl+Alt+Tab": "Use the arrow keys to switch between all open apps",
     "Ctrl+Esc": "Open Start",
     "Ctrl+Shift+Esc": "Open Task Manager",
@@ -46,8 +47,8 @@ const app = {
       "Select more than one item in a window or on the desktop, or select text in a document",
     "Shift+Delete":
       "Delete the selected item without moving it to the Recycle Bin first",
-    arrowRight: "Open the next menu to the right, or open a submenu",
-    arrowLeft: "Open the next menu to the left, or close a submenu",
+    right: "Open the next menu to the right, or open a submenu",
+    left: "Open the next menu to the left, or close a submenu",
     Esc: "Stop or leave the current task",
     win: "Open or close Start",
     "win+A": "Open Action center",
@@ -89,20 +90,22 @@ const app = {
     "win+Ctrl+Shift+number":
       "Open the desktop and open a new instance of the app located at the given position on the taskbar as an administrator",
     "win+Tab": "Open Task view",
-    "win+arrowUp": "Maximize the window",
-    "win+arrowDown":
-      "Remove current app from screen or minimize the desktop window",
-    "win+arrowLeft":
+    "win+up": "Maximize the window",
+    "win+down": "Remove current app from screen or minimize the desktop window",
+    "win+left":
       "Maximize the app or desktop window to the left side of the screen",
-    "win+arrowRight":
+    "win+right":
       "Maximize the app or desktop window to the right side of the screen",
     "win+Home":
       "Minimize all except the active desktop window (restores all windows on second stroke)",
-    "win+Shift+arrowUp":
+    "win+Shift+up":
       "Stretch the desktop window to the top and bottom of the screen",
-    "win+Shift+arrowDown":
+    "win+Shift+down":
       "Restore/minimize active desktop windows vertically, maintaining width",
-    "win+Shift+arrowLeft or Right arrow":
+    // TODO split
+    "win+Shift+left":
+      "Move an app or window in the desktop from one monitor to another",
+    "win+Shift+right":
       "Move an app or window in the desktop from one monitor to another",
     "win+space": "Switch input language and keyboard layout",
     "win+Ctrl+space": "Change to a previously selected input",
@@ -143,14 +146,14 @@ const app = {
     "Num Lock+plus (+)": "Display the contents of the selected folder",
     "Num Lock+minus (-)": "Collapse the selected folder",
     "Alt+P": "Display the preview panel",
-    "Alt+arrowUp": "View the folder that the folder was in",
+    "Alt+up": "View the folder that the folder was in",
     End: "Display the bottom of the active window",
     Home: "Display the top of the active window",
     F11: "Maximize or minimize the active window",
     "win+Ctrl+D": "Add a virtual desktop",
-    "win+Ctrl+arrowRight":
+    "win+Ctrl+right":
       "Switch between virtual desktops you’ve created on the right",
-    "win+Ctrl+arrowLeft":
+    "win+Ctrl+left":
       "Switch between virtual desktops you’ve created on the left",
     "win+Ctrl+F4": "Close the virtual desktop you're using",
   },

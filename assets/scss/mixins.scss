@@ -1,0 +1,75 @@
+@mixin title {
+  font-family: 'NEOPIXEL';
+  color: $white;
+  text-align: center;
+  font-size: 5.375rem;
+  font-style: normal;
+  line-height: 6.13825rem;
+}
+
+@mixin h1($font-family: 'NEOPIXEL') {
+  font-family: $font-family;
+  color: $white;
+  text-align: center;
+  font-size: 3.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 4.425rem;
+}
+
+@mixin h2 {
+  @include font-system-ui;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 508;
+  line-height: 3.426rem;
+}
+
+@mixin p($font-family: system-ui) {
+  font-family: $font-family;
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.134rem;
+}
+
+@mixin font-system-ui {
+  font-family: system-ui;
+}
+
+@mixin sizer($margin-top-bottom: 8rem) {
+  margin: $margin-top-bottom auto;
+  max-width: 72.8125rem;
+}
+
+@mixin list($margin-top-bottom: 8rem) {
+  @include sizer($margin-top-bottom);
+  height: 100%;
+  border-radius: 1.875rem;
+  background: #1B1C1F;
+  padding: 1rem 0.875rem;
+}
+
+@mixin listItemWrapper($has-icon: false) {
+  color: $white;
+  font-size: 1rem;
+  display: grid;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.9375rem 1.6875rem;
+
+  &:hover {
+    border-radius: 1.25rem;
+    background: rgba(#D9D9D9, 0.1);
+  }
+}
+
+@mixin listItem {
+  &:after {
+    content: '';
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    width: calc(100% - 1.5rem);
+    margin-left: 1.6875rem;
+  }
+}

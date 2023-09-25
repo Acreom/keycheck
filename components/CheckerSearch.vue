@@ -1,56 +1,88 @@
 <template>
-  <div class="search-results">
-    <Result v-for="result of results" :result="result" />
-  </div>
-  <div class="show-more">
-    <button v-if="results.length && cutoff < matches.length" @click="showAll">Show All Results</button>
+  <div class="search">
+    <div class="search__platform">
+      <PlatformSwitcher />
+    </div>
+    <div class="search__results">
+      <Result v-for="result of fullMatches" :result="result" />
+      <p v-if="partialMatches.length">Similar Results</p>
+      <Result v-for="result of partialMatchesShon" :result="result" />
+    </div>
+    <div class="search__show-more">
+      <button v-if="partialMatches.length && cutoff < partialMatches.length" @click="showAll">Show More</button>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 const {$apps} = useNuxtApp();
 const props = defineProps({
-  query: { type: Array, required: true },
+  query: { type: Array<String>, required: true },
 })
 const cutoff = ref<number>(10);
 
 const matches = computed(() => {
   return $apps.$getShortcutsMatches(props.query.join('+').toLowerCase());
 });
-const results = computed(() => {
-  return props.query.length ? matches.value.slice(0, cutoff.value) : [];
+
+const fullMatches = computed(() => {
+  return matches.value.filter((match: any) => !match.partial)
+});
+
+const partialMatches = computed(() => {
+  return matches.value.filter((match: any) => match.partial)
+});
+
+const partialMatchesShon = computed(() => {
+  return matches.value.filter((match: any) => match.partial).slice(0, cutoff.value)
 });
 
 watch(
-    matches,
+    partialMatches,
     (val, prevVal) => {
-      console.log('watch match', val.value, prevVal.value);
       if (val.length !== prevVal.length) {
         cutoff.value = 10;
       }
     }
 )
 const showAll = () => {
-  cutoff.value = matches.value.length;
+  cutoff.value = partialMatches.value.length;
 }
 </script>
 <style lang="scss" scoped>
-.search-results {
-  margin-top: 32px;
-}
-.show-more {
-  margin: 32px auto 0;
-  max-width: 340px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  button {
-    background: none;
-    border: none;
-    color: $blueGrey400;
-    padding: 16px 32px;
+.search {
+  margin-top: 2rem;
 
-    &:hover {
-      color: $white;
+  &__platform {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__results {
+    @include list(1.75rem);
+
+    p {
+      @include p(Inter);
+      padding: 2.0625rem 1.5rem 1.125rem;
+      color: #A3C6E6;
+    }
+  }
+
+  &__show-more {
+    margin: 2rem auto 0;
+    max-width: 21.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      background: none;
+      border: none;
+      color: $blueGrey400;
+      padding: 1rem 2rem;
+
+      &:hover {
+        color: $white;
+      }
     }
   }
 }

@@ -1,8 +1,10 @@
 const app = {
-  id: "google-chrome",
-  name: "Google Chrome",
+  id: "chrome",
+  name: "Chrome",
   icon: "/app-icons/chrome.png",
   homepage: "https://www.google.com/chrome",
+  description:
+    "Chrome is a web browser developed by Google. It was first released in 2008 and has since become one of the most popular web browsers in the world. Chrome is available for multiple operating systems, including Windows, macOS, Linux, Android, and iOS.",
   shortcuts: {
     "cmdOrCtrl+N": "Open a new window",
     "shift+cmdOrCtrl+N": "Open a new window in Incognito mode",
@@ -15,9 +17,9 @@ const app = {
     "cmdOrCtrl+1-8": "Jump to a specific tab",
     "cmdOrCtrl+9": "Jump to the last tab",
     "alt+Home": "Open your home page in the current tab",
-    "alt+arrowLeft":
+    "alt+left":
       "Open the previous page from your browsing history in the current tab",
-    "alt+arrowRight":
+    "alt+right":
       "Open the next page from your browsing history in the current tab",
     "cmdOrCtrl+W": "Close the current tab",
     "shift+cmdOrCtrl+W": "Close all open tabs and the browser",

@@ -1,37 +1,32 @@
 <template>
   <div class="app-details">
-    <nuxt-img :src="app.icon" :alt="`${app.name} logo`" class="app-details__icon" />
-    <nuxt-link :to="app.homepage" target="_blank" class="app-details__homepage">{{app.name}}</nuxt-link>
-    <button class="app-details__expand">+</button>
+    <nuxt-link :to="`/apps/${app.id}`" class="app-details__wrapper">
+      <img :src="app.icon" :alt="`${app.name} logo`" class="app-details__logo" />
+      <div class="app-details__homepage">{{app.name}}</div>
+      <ArrowRight class="icon" />
+    </nuxt-link>
   </div>
 </template>
 <script lang="ts" setup>
+import ArrowRight from "@/assets/icons/ArrowRight.svg?component";
 const props = defineProps({
   app: { type: Object, required: true },
 })
-
 const app = computed(() => props.app);
-
 </script>
 <style lang="scss" scoped>
 .app-details {
-  color: $white;
-  font-size: 1rem;
-  display: grid;
-  grid-template-columns: 28px 1fr 28px;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 8px;
-  border: 1px solid $blueGrey700;
-  border-radius: 12px;
-  margin: 0 16px 4px;
+  @include listItem;
 
-  &__icon{
-    height: 24px;
+  &__wrapper {
+    @include listItemWrapper;
+    grid-template-columns: 1.75rem 1fr 1.75rem;
   }
-  &__name{
 
+  &__logo {
+    height: 1.5rem;
   }
+
   &__homepage{
     font-size: 1.125rem;
     font-style: normal;
@@ -40,18 +35,13 @@ const app = computed(() => props.app);
     color: $white;
     text-decoration: none;
   }
-  &__expand{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px 0;
-    background: $blueGrey600;
-    border: none;
-    border-radius: 6px;
-    color: $blueGrey50;
-    line-height: 1rem;
-    &:hover {
-      background: $blueGrey400;
+
+  .icon {
+    color: #D9D9D9;
+  }
+
+  &:hover {
+    .icon {
       color: $white;
     }
   }

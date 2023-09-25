@@ -1,5 +1,3 @@
-
-
 html {
   font-size: 16px;
 
@@ -13,9 +11,15 @@ html {
 }
 
 body {
-  background: black;
-  margin: 0 auto;
-  position: relative;
-  background: $black;
   font-family: Inter;
+  background: $background;
+  margin: 0;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::after {
+  content: '';
+  display: block;
+  height: 50px;
 }

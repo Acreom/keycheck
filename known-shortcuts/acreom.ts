@@ -3,6 +3,8 @@ const app = {
   name: "acreom",
   icon: "/app-icons/acreom.png",
   homepage: "https://acreom.com",
+  description:
+    "acreom is the integrated markdown knowledge base with tasks. A personal daily driver for dev workflows.",
   globals: {
     "cmdOrCtrl+shift+space": "open quick capture",
   },

@@ -7,14 +7,14 @@
 .small-key {
   width: 100%;
   height: 100%;
-  max-width: 28px;
+  max-width: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-variant-numeric: tabular-nums;
   font-style: normal;
   font-weight: 500;
-  letter-spacing: -0.224px;
+  letter-spacing: -0.014rem;
   color: $blueGrey50;
   font-size: 1.398rem;
   line-height: 1.75rem;

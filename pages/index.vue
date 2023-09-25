@@ -2,15 +2,12 @@
   <div class="shortcuts-checker">
     <AppTitle />
     <CheckerCapture />
+    <About />
   </div>
 </template>
-<script>
-
-</script>
 <style lang="scss" scoped>
 .shortcuts-checker {
-  margin: 128px auto;
-  max-width: 1150px;
+  @include sizer;
   height: 100%;
 }
 </style>

@@ -1,41 +1,33 @@
 const app = {
   id: "macos",
-  name: "MacOS",
+  name: "macOS",
   icon: "/app-icons/macos.png",
   homepage: "https://apple.com",
+  description:
+    "macOS is an operating system developed by Apple Inc. It is designed specifically for Apple's Macintosh computers, including desktops and laptops. macOS provides the core software infrastructure that allows users to interact with their Mac computers, run applications, and perform various tasks.",
   globals: {
-    "cmdOrCtrl+X": "Cut",
-    "cmdOrCtrl+C": "Copy",
-    "cmdOrCtrl+V": "Paste",
-    "cmdOrCtrl+Z": "Undo",
-    "cmdOrCtrl+shift+Z": "Redo",
-    "cmdOrCtrl+A": "Select all",
-    "cmdOrCtrl+F": "Search",
-    "cmdOrCtrl+H": "Hide window",
-    "cmdOrCtrl+M": "Minimize window",
-    "cmdOrCtrl+N": "New",
-    "cmdOrCtrl+O": "Open",
-    "cmdOrCtrl+P": "Print",
-    "cmdOrCtrl+S": "Save",
-    "cmdOrCtrl+W": "Close window",
-    "cmdOrCtrl+Q": "Quit the app",
-    "alt+cmdOrCtrl+Esc": "Force Quit",
-    "cmdOrCtrl+Space": "Spotlight search",
+    "cmd+H": "Hide window",
+    "cmd+M": "Minimize window",
+    "cmd+N": "New",
+    "cmd+O": "Open",
+    "cmd+P": "Print",
+    "cmd+S": "Save",
+    "cmd+W": "Close window",
+    "cmd+Q": "Quit the app",
+    "alt+cmd+Esc": "Force Quit",
+    "cmd+Space": "Spotlight search",
     Space: "Quick Look",
-    "cmdOrCtrl+Tab": "Switch apps",
-    "shift+cmdOrCtrl+Tilde (~)": "Switch windows",
-    "shift+cmdOrCtrl+3": "Screenshot",
-    "cmdOrCtrl+,": "Preferences",
+    "cmd+Tab": "Switch apps",
+    "shift+cmd+~": "Switch windows",
+    "shift+cmd+3": "Screenshot",
+    "cmd+,": "Preferences",
     powerButton: "Turn on, wake",
     "ctrl+cmd+powerButton": "Force restart",
     "ctrl+shift+powerButton": "Put your displays to sleep",
     "ctrl+alt+cmd+powerButton": "Quit all apps, shut down Mac",
-    "shift+cmdOrCtrl+Q": "Log out of your account",
-    "cmdOrCtrl+B": "Bold",
-    "cmdOrCtrl+I": "Italic",
-    "cmdOrCtrl+U": "Underline",
-    "shift+cmdOrCtrl+:": "Display the Spelling and Grammar window",
-    "cmdOrCtrl+;": "Find misspelled words in the document",
+    "shift+cmd+Q": "Log out of your account",
+    "shift+cmd+:": "Display the Spelling and Grammar window",
+    "cmd+;": "Find misspelled words in the document",
     "alt+Delete": "Delete the word to the left of the insertion point",
     "ctrl+H":
       "Delete the character to the left of the insertion point Or use Delete",
@@ -45,44 +37,40 @@ const app = {
       "Forward delete on keyboards that don't have a Forward Delete key Or use ctrl  D",
     "ctrl+K":
       "Delete the text between the insertion point and the end of the line or paragraph",
-    "cmdOrCtrl+Delete":
+    "cmd+Delete":
       "Select Delete or Don't Save in a dialog that contains a Delete or Don't Save button",
-    "Fn+arrowUp": "Page Up: Scroll up one page",
-    "Fn+arrowDown": "Page Down: Scroll down one page",
-    "Fn+arrowLeft": "Home: Scroll to the beginning of a document",
-    "Fn+arrowRight": "End: Scroll to the end of a document",
-    "cmdOrCtrl+arrowUp":
-      "Move the insertion point to the beginning of the document",
-    "cmdOrCtrl+arrowDown":
-      "Move the insertion point to the end of the document",
-    "cmdOrCtrl+arrowLeft":
-      "Move the insertion point to the beginning of the current line",
-    "cmdOrCtrl+arrowRight":
-      "Move the insertion point to the end of the current line",
-    "alt+arrowLeft":
+    "Fn+up": "Page Up: Scroll up one page",
+    "Fn+down": "Page Down: Scroll down one page",
+    "Fn+left": "Home: Scroll to the beginning of a document",
+    "Fn+right": "End: Scroll to the end of a document",
+    "cmd+up": "Move the insertion point to the beginning of the document",
+    "cmd+down": "Move the insertion point to the end of the document",
+    "cmd+left": "Move the insertion point to the beginning of the current line",
+    "cmd+right": "Move the insertion point to the end of the current line",
+    "alt+left":
       "Move the insertion point to the beginning of the previous word",
-    "alt+arrowRight": "Move the insertion point to the end of the next word",
-    "shift+cmdOrCtrl+arrowUp":
+    "alt+right": "Move the insertion point to the end of the next word",
+    "shift+cmd+up":
       "Select the text between the insertion point and the beginning of the document",
-    "shift+cmdOrCtrl+arrowDown":
+    "shift+cmd+down":
       "Select the text between the insertion point and the end of the document",
-    "shift+cmdOrCtrl+arrowLeft":
+    "shift+cmd+left":
       "Select the text between the insertion point and the beginning of the current line",
-    "shift+cmdOrCtrl+arrowRight":
+    "shift+cmd+right":
       "Select the text between the insertion point and the end of the current line",
-    "shift+arrowUp":
+    "shift+up":
       "Extend text selection to the nearest character at the same horizontal location on the line above",
-    "shift+arrowDown":
+    "shift+down":
       "Extend text selection to the nearest character at the same horizontal location on the line below",
-    "shift+arrowLeft": "Extend text selection one character to the left",
-    "shift+arrowRight": "Extend text selection one character to the right",
-    "alt+shift+arrowUp":
+    "shift+left": "Extend text selection one character to the left",
+    "shift+right": "Extend text selection one character to the right",
+    "alt+shift+up":
       "Extend text selection to the beginning of the current paragraph, then to the beginning of the following paragraph if pressed again",
-    "alt+shift+arrowDown":
+    "alt+shift+down":
       "Extend text selection to the end of the current paragraph, then to the end of the following paragraph if pressed again",
-    "alt+shift+arrowLeft":
+    "alt+shift+left":
       "Extend text selection to the beginning of the current word, then to the beginning of the following word if pressed again",
-    "alt+shift+arrowRight":
+    "alt+shift+right":
       "Extend text selection to the end of the current word, then to the end of the following word if pressed again",
     "ctrl+A": "Move to the beginning of the line or paragraph",
     "ctrl+E": "Move to the end of a line or paragraph",
@@ -151,17 +139,28 @@ const app = {
     "cmd+4": "View the items in a Finder window with Cover Flow",
     "cmd+[": "Go to the previous folder",
     "cmd+]": "Go to the next folder",
-    "cmd+arrowUp": "Open the folder that contains the current folder",
-    "cmd+ctrl+arrowUp":
+    "cmd+up": "Open the folder that contains the current folder",
+    "cmd+ctrl+up":
       "Open the folder that contains the current folder in a new window",
-    "cmd+arrowDown": "Open the selected item",
-    arrowRight: "Open the selected folder This works only when in list view",
-    arrowLeft: "Close the selected folder This works only when in list view",
+    "cmd+down": "Open the selected item",
+    left: "Open the selected folder This works only when in list view",
+    right: "Close the selected folder This works only when in list view",
     "cmd+Delete": "Move the selected item to the Trash",
     "shift+cmd+Delete": "Empty the Trash",
     "alt+shift+cmd+Delete": "Empty the Trash without confirmation dialog",
   },
-  shortcuts: {},
+  shortcuts: {
+    "cmd+X": "Cut",
+    "cmd+C": "Copy",
+    "cmd+V": "Paste",
+    "cmd+Z": "Undo",
+    "cmd+shift+Z": "Redo",
+    "cmd+A": "Select all",
+    "cmd+F": "Search",
+    "cmd+B": "Bold",
+    "cmd+I": "Italic",
+    "cmd+U": "Underline",
+  },
 };
 
 export { app };
