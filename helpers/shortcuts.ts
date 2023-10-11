@@ -1,5 +1,4 @@
 const keysMap: Record<string, string> = {
-  meta: "⌘",
   shift: "⇧",
   ctrl: "^",
   alt: "⎇",
@@ -14,11 +13,17 @@ const keysMap: Record<string, string> = {
   tab: "↹",
   escape: "esc",
   powerButton: "⏻",
+  plus: "+",
+  minus: "-",
 };
 
 function transformKeys(keys: string[]) {
   return keys.map((key: string) => {
     key = key.toLowerCase();
+    if (key === "meta") {
+      const platform = useState("platform", () => "mac").value;
+      return platform === "mac" ? "⌘" : "⊞";
+    }
     if (Object.keys(keysMap).includes(key)) {
       return keysMap[key];
     }
@@ -79,7 +84,6 @@ const KEYCODE_MAP: Record<number, string> = {
 };
 
 function characterFromEvent(e: KeyboardEvent) {
-  console.log("characterFromEvent", e.which, MAP[e.which]);
   if (MAP[e.which]) {
     return MAP[e.which];
   }
@@ -115,4 +119,18 @@ function extractKeys(event: KeyboardEvent | null) {
   return [...new Set(keys)];
 }
 
-export { extractKeys, transformKeys };
+function platformPreprocess(shortcut: string, platform: "mac" | "win") {
+  const generalPreprocessed = shortcut
+    .toLowerCase()
+    .replace(/(return)/g, "enter");
+  if (platform === "win") {
+    return generalPreprocessed
+      .replace(/win/g, "meta")
+      .replace(/(cmdorctrl)/g, "ctrl");
+  }
+  return generalPreprocessed
+    .replace(/(cmdorctrl)/g, "meta")
+    .replace(/(cmd)/g, "meta");
+}
+
+export { extractKeys, transformKeys, platformPreprocess };

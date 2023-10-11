@@ -11,15 +11,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import {useOptionsStore} from "~/store/options";
 import WindowsIcon from "@/assets/icons/WindowsIcon.svg?component";
 import MacIcon from "@/assets/icons/MacIcon.svg?component";
 
-const store = useOptionsStore();
-const platform = computed(() => store.currentPlatform);
+const platform = useState('platform', () => "mac");
 
-const setPlatform = (platform: 'win' | 'mac') => {
-  store.setPlatform(platform);
+const setPlatform = (value: 'win' | 'mac') => {
+  platform.value = value;
 }
 </script>
 <style lang="scss" scoped>

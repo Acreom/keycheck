@@ -11,10 +11,15 @@ const app = {
     "cmdOrCtrl+T": "Open a new tab, and jump to it",
     "shift+cmdOrCtrl+T": "Reopen the last closed tab, and jump to it",
     "cmdOrCtrl+Tab": "Jump to the next open tab",
-    "cmdOrCtrl+PgDn": "Jump to the next open tab",
     "shift+cmdOrCtrl+Tab": "Jump to the previous open tab",
-    "cmdOrCtrl+PgUp": "Jump to the previous open tab",
-    "cmdOrCtrl+1-8": "Jump to a specific tab",
+    "cmdOrCtrl+1": "Jump to tab 1",
+    "cmdOrCtrl+2": "Jump to tab 2",
+    "cmdOrCtrl+3": "Jump to tab 3",
+    "cmdOrCtrl+4": "Jump to tab 4",
+    "cmdOrCtrl+5": "Jump to tab 5",
+    "cmdOrCtrl+6": "Jump to tab 6",
+    "cmdOrCtrl+7": "Jump to tab 7",
+    "cmdOrCtrl+8": "Jump to tab 8",
     "cmdOrCtrl+9": "Jump to the last tab",
     "alt+Home": "Open your home page in the current tab",
     "alt+left":
@@ -38,7 +43,8 @@ const app = {
     "cmdOrCtrl+F": "Open the Find Bar to search the current page",
     "cmdOrCtrl+g": "Jump to the next match to your Find Bar search",
     "shift+cmdOrCtrl+G": "Jump to the previous match to your Find Bar search",
-    "shift+cmdOrCtrl+J or F12": "Open Developer Tools",
+    "shift+cmdOrCtrl+J": "Open Developer Tools",
+    F12: "Open Developer Tools",
     "shift+cmdOrCtrl+Delete": "Open the Clear Browsing Data options",
     F1: "Open the Chrome Help Center in a new tab",
     "shift+cmdOrCtrl+M": "Log in a different user or browse as a Guest",
@@ -56,16 +62,14 @@ const app = {
     Esc: "Stop the page loading",
     Tab: "Browse clickable items moving forward",
     "Shift+Tab": "Browse clickable items moving backward",
-    "cmdOrCtrl+o+Select a file":
-      "Open a file from your computer in Google Chrome",
     "cmdOrCtrl+alt+u":
       "Display non-editable HTML source code for the current page",
     "cmdOrCtrl+alt+j": "Open the JavaScript Console",
     "cmdOrCtrl+d": "Save your current webpage as a bookmark",
     "cmdOrCtrl+Shift+d": "Save all open tabs as bookmarks in a new folder",
     "cmdOrCtrl+Ctrl+f": "Turn full-screen mode on or off",
-    "cmdOrCtrl++": "Make everything on the page bigger",
-    "cmdOrCtrl+-": "Make everything on the page smaller",
+    "cmdOrCtrl+plus": "Make everything on the page bigger",
+    "cmdOrCtrl+minus": "Make everything on the page smaller",
     "cmdOrCtrl+0": "Return everything on the page to the default size",
     Space: "Scroll down a webpage, a screen at a time",
     "Shift+Space": "Scroll up a webpage, a screen at a time",
@@ -75,4 +79,4 @@ const app = {
   },
 };
 
-export { app };
+export default app;

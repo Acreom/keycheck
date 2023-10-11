@@ -1,3 +1,5 @@
+import { platformPreprocess } from "~/helpers/shortcuts";
+
 export interface AppParams {
   id: string;
   name: string;
@@ -33,14 +35,6 @@ export class App {
     this.description = params.description ?? "No description provided";
   }
 
-  platformPreprocess(shortcut: string, platform: "mac" | "win") {
-    return shortcut
-      .toLowerCase()
-      .replace(/(esc)/g, "escape")
-      .replace(/(cmdorctrl)/g, platform === "mac" ? "meta" : "ctrl")
-      .replace(/(cmd)/g, "meta");
-  }
-
   hasFullMatch(shortcut: string, query: string) {
     const shortcutParts = shortcut.split("+");
     const queryParts = query.split("+");
@@ -64,26 +58,26 @@ export class App {
   getGlobalMatches(input: string, platform: "mac" | "win") {
     const fullMatches = Object.keys(this.globals!)
       .filter((key) =>
-        this.hasFullMatch(this.platformPreprocess(key, platform), input),
+        this.hasFullMatch(platformPreprocess(key, platform), input),
       )
       .map((match) => ({
         global: true,
         icon: this.icon,
         name: this.name,
         description: this.globals[match],
-        keys: this.platformPreprocess(match, platform),
+        keys: platformPreprocess(match, platform),
         partial: false,
       }));
     const partialMatches = Object.keys(this.globals!)
       .filter((key) =>
-        this.hasPartialMatch(this.platformPreprocess(key, platform), input),
+        this.hasPartialMatch(platformPreprocess(key, platform), input),
       )
       .map((match) => ({
         global: true,
         icon: this.icon,
         name: this.name,
         description: this.globals[match],
-        keys: this.platformPreprocess(match, platform),
+        keys: platformPreprocess(match, platform),
         partial: true,
       }));
     return [...fullMatches, ...partialMatches];
@@ -92,26 +86,26 @@ export class App {
   getMatches(input: string, platform: "mac" | "win") {
     const fullMatches = Object.keys(this.shortcuts!)
       .filter((key) =>
-        this.hasFullMatch(this.platformPreprocess(key, platform), input),
+        this.hasFullMatch(platformPreprocess(key, platform), input),
       )
       .map((match) => ({
         global: false,
         icon: this.icon,
         name: this.name,
         description: this.shortcuts[match],
-        keys: this.platformPreprocess(match, platform),
+        keys: platformPreprocess(match, platform),
         partial: false,
       }));
     const partialMatches = Object.keys(this.shortcuts!)
       .filter((key) =>
-        this.hasPartialMatch(this.platformPreprocess(key, platform), input),
+        this.hasPartialMatch(platformPreprocess(key, platform), input),
       )
       .map((match) => ({
         global: false,
         icon: this.icon,
         name: this.name,
         description: this.shortcuts[match],
-        keys: this.platformPreprocess(match, platform),
+        keys: platformPreprocess(match, platform),
         partial: true,
       }));
     return [...fullMatches, ...partialMatches];

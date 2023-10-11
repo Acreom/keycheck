@@ -2,7 +2,7 @@
   <div class="footer">
     <nuxt-link to="https://acreom.com" target="_blank">made by acreom</nuxt-link>
     <div class="links">
-      <nuxt-link to="/contribute">This tool is open-source. How to contribute?</nuxt-link>
+      <nuxt-link to="/about">About</nuxt-link>
     </div>
   </div>
 </template>

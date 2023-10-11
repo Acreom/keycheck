@@ -38,12 +38,10 @@ const app = {
     "cmdOrCtrl+shift+right": "Move a selected block around",
     "cmdOrCtrl+shift+down": "Move a selected block around",
     "cmdOrCtrl+shift+left": "Move a selected block around",
-    "cmdOrCtrl+shift+T": "Expand or close all toggles in a toggle list",
-    "cmdOrCtrl+alt+T": "Expand or close all toggles in a toggle list",
     "cmdOrCtrl+enter": "Modify the current block you’re in",
-    "+": "Create a sub-page, page somewhere else or link a page",
+    plus: "Create a sub-page, page somewhere else or link a page",
     "cmdOrCtrl+Shift+P": "Move page to",
   },
 };
 
-export { app };
+export default app;

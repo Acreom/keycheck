@@ -4,6 +4,7 @@
       <KeyboardIcon class="header__navigation__icon" />
       <div class="header__navigation__divider"></div>
       <nuxt-link :class="{active: activeRoute === 'index'}" class="header__navigation__link" to="/">Check</nuxt-link>
+      <nuxt-link :class="{active: activeRoute.includes('shortcuts')}" class="header__navigation__link" to="/shortcuts">Browse</nuxt-link>
       <nuxt-link :class="{active: activeRoute.includes('apps')}" class="header__navigation__link" to="/apps">Apps</nuxt-link>
     </div>
   </div>
@@ -25,7 +26,7 @@ const activeRoute = computed(() => {
   border-radius: 82px;
   background: rgba(27, 28, 31, 0.75);
   backdrop-filter: blur(12px);
-  max-width: 20rem;
+  max-width: 26rem;
   margin: 0 auto;
 
   &__navigation {

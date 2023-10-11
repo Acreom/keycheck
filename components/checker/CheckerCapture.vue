@@ -1,5 +1,6 @@
 <template>
   <div class="checker-wrapper">
+    <input ref="mobileInput" placeholder="Mobile Input" autocapitalize="none" v-if="isMobile" />
     <div class="checker-wrapper__checker">
       <button class="checker-wrapper__close" @click="clear">
         <CloseIcon class="icon" />
@@ -23,14 +24,25 @@
       />
     </div>
   </div>
+  <CheckerCaptureControls @input="onInputKey"/>
   <CheckerSearch v-if="capturedKeys.length" :query="capturedKeys" />
 </template>
 <script setup lang="ts">
 import {extractKeys, transformKeys} from "~/helpers/shortcuts";
 import CloseIcon from "@/assets/icons/CloseIcon.svg?component";
+import CheckerCaptureControls from "@/components/checker/CheckerCaptureControls.vue";
+import {platformPreprocess} from "~/helpers/shortcuts";
+import Key from "~/components/checker/Key.vue";
+
+const mobileInput = ref<HTMLInputElement | null>(null);
+
+const route = useRoute();
+const router = useRouter();
+
+const platform = useState('platform', () => "mac");
+const isMobile = useState('isMobile', () => false);
 
 const focusedIndex = ref<number>(0);
-
 const capturedKeys = ref<string[]>([]);
 
 const clear = () => {
@@ -40,6 +52,20 @@ const clear = () => {
 
 const onFocusChanged = (index: number) => {
   focusedIndex.value = index;
+  if (isMobile) {
+    mobileInput.value?.focus();
+  }
+}
+
+const onInputKey = (key: string) => {
+if (focusedIndex.value === capturedKeys.value.length) {
+    focusedIndex.value += 1;
+  }
+  if (focusedIndex.value < capturedKeys.value.length) {
+    capturedKeys.value.splice(focusedIndex.value, 1, key);
+  } else {
+    capturedKeys.value.push(key);
+  }
 }
 
 const onInput = (event: KeyboardEvent, index: number) => {
@@ -59,6 +85,15 @@ const onInput = (event: KeyboardEvent, index: number) => {
     capturedKeys.value.push(key);
   }
 }
+
+// @ts-ignore
+onMounted(() => {
+  if (route.params?.keybind) {
+    capturedKeys.value = platformPreprocess(route.params.keybind, platform.value).split('+');
+    focusedIndex.value = capturedKeys.value.length;
+    router.replace({params: {}});
+  }
+})
 </script>
 <style lang="scss" scoped>
 .checker-wrapper {

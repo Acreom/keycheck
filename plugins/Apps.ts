@@ -1,18 +1,15 @@
-import { App, AppParams, Result } from "~/helpers/AppBase";
-import { useOptionsStore } from "~/store/options";
+import { App, Result } from "~/helpers/AppBase";
+import { loadAppsConfigs } from "~/helpers/apps";
 async function loadApps() {
-  const imports = await Promise.all(
-    Object.values(import.meta.glob("@/known-shortcuts/*.ts")).map(
-      async (app) => ((await app()) as any).app as AppParams,
-    ),
-  );
-  const apps = imports.sort((a: any, b: any) => a.name.localeCompare(b.name));
-  return apps.map((app) => new App(app));
+  const appConfigs = await loadAppsConfigs();
+  return appConfigs.map((app) => new App(app));
 }
 
-function getShortcutsMatches(input: string, apps: App[]) {
-  const store = useOptionsStore();
-  const platform = store.currentPlatform;
+function getShortcutsMatches(
+  input: string,
+  apps: App[],
+  platform: "win" | "mac",
+) {
   const globalMatches = apps.reduce((acc: Result[], val: App) => {
     return [...acc, ...val.getGlobalMatches(input, platform)];
   }, [] as Result[]);
@@ -21,19 +18,23 @@ function getShortcutsMatches(input: string, apps: App[]) {
   }, [] as Result[]);
   return [...globalMatches, ...results];
 }
+
 export default defineNuxtPlugin(async (nuxtApp) => {
   const apps = ref<App[]>(await loadApps());
   nuxtApp.provide("apps", {
     $getApps: () => apps.value,
-    $getShortcutsMatches: (input: string) => {
-      return getShortcutsMatches(input, apps.value);
+    $getShortcutsMatches: (input: string, platform: "win" | "mac") => {
+      return getShortcutsMatches(input, apps.value, platform);
     },
     $getMatchesCount: (appId: string) => {
       const app = apps.value.find((app) => app.id === appId);
+      const platform = useState("platform", () => "mac");
       if (!app) return [];
-      return Object.keys(app.shortcuts)
-        .map((shortcut) => getShortcutsMatches(shortcut, apps.value).length)
-        .filter((count) => count > 1).length;
+      return Object.keys(app.shortcuts).reduce((acc: number, val: string) => {
+        return (
+          acc + getShortcutsMatches(val, apps.value, platform.value).length
+        );
+      }, 0);
     },
   });
 });

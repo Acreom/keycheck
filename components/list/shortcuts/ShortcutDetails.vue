@@ -1,5 +1,5 @@
 <template>
-  <div class="shortcut-details">
+  <div class="shortcut-details" @click="onClick">
     <div class="shortcut-details__wrapper">
       <div class="shortcut-details__description">{{description}}</div>
       <div class="shortcut-details__keybind">
@@ -11,27 +11,28 @@
   </div>
 </template>
 <script lang="ts" setup>
-import {transformKeys} from "~/helpers/shortcuts";
-import {useOptionsStore} from "~/store/options";
+import {transformKeys, platformPreprocess} from "~/helpers/shortcuts";
 
 const props = defineProps({
   keybind: { type: String, required: true },
-  description: {type: String, required: true}
+  description: {type: String, required: true},
+  link: {type: Boolean, default: false}
 });
 
-const platformPreprocess = (shortcut: string, platform: "mac" | "win") => {
-  return shortcut
-      .toLowerCase()
-      .replace(/(esc)/g, "escape")
-      .replace(/(cmdorctrl)/g, platform === "mac" ? "meta" : "ctrl")
-      .replace(/(cmd)/g, "meta")
-      .replace(/(ctrl)/g, "ctrl");
-}
+const platform = useState('platform', () => "mac");
 
 const resultKeys = computed(() => {
-  const store = useOptionsStore();
-  return transformKeys(platformPreprocess(props.keybind, store.currentPlatform).split('+'));
+  return transformKeys(platformPreprocess(props.keybind, platform.value).split('+'));
 });
+
+const onClick = () => {
+  if (props.link) {
+    const router = useRouter();
+    router.push({
+      path: encodeURI(`/shortcuts/${props.keybind?.toLowerCase()}`),
+    })
+  }
+}
 </script>
 <style lang="scss" scoped>
 .shortcut-details {

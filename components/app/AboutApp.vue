@@ -41,7 +41,7 @@ const matches = computed(() => $apps.$getMatchesCount(currentApp.value.id));
   margin-top: 0.875rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 7,875rem;
+  gap: 7.875rem;
   align-items: flex-start;
   justify-content: space-between;
 

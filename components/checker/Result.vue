@@ -14,8 +14,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-import Danger from "@/assets/icons/Danger.svg";
 import {transformKeys} from "~/helpers/shortcuts";
+import GlobalShortcutIndicator from "~/components/list/shortcuts/GlobalShortcutIndicator.vue";
 
 const props = defineProps({
   result: { type: Object, required: true },

@@ -59,4 +59,4 @@ const app = {
   },
 };
 
-export { app };
+export default app;

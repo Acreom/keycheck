@@ -1,4 +1,5 @@
 import svgLoader from "vite-svg-loader";
+import { buildAppRoutes, buildShortcutRoutes } from "./helpers/apps";
 
 const fonts = {
   families: {
@@ -15,7 +16,13 @@ const fonts = {
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["@/assets/css/reset.css", "@/assets/scss/global.scss"],
-  modules: [["@nuxtjs/google-fonts", fonts], "@nuxt/image", "@pinia/nuxt"],
+  modules: [
+    ["@nuxtjs/google-fonts", fonts],
+    "@nuxt/image",
+    "nuxt-og-image",
+    "nuxt-simple-robots",
+    "nuxt-simple-sitemap",
+  ],
   vite: {
     css: {
       preprocessorOptions: {
@@ -26,5 +33,19 @@ export default defineNuxtConfig({
       },
     },
     plugins: [svgLoader({})],
+  },
+  sitemap: {
+    urls: async () => {
+      const appRoutes = await buildAppRoutes();
+      const shortcutRoutes = await buildShortcutRoutes();
+      return [...appRoutes, ...shortcutRoutes];
+    },
+  },
+  site: {
+    url: "https://keycheck.dev",
+  },
+  robots: {
+    disallow: [],
+    allow: "/",
   },
 });
