@@ -17,7 +17,7 @@ import {platformPreprocess, transformKeys} from "../../helpers/shortcuts";
 const emit = defineEmits(['input']);
 const platform = useState('platform', () => "mac");
 
-const keys = ['meta', 'ctrl', 'alt', 'shift', 'up', 'down', 'left', 'right', 'enter', 'space', 'backspace', 'tab', 'esc', 'plus', 'minus', '#'];
+const keys = ['win', 'meta', 'ctrl', 'alt', 'shift', 'up', 'down', 'left', 'right', 'enter', 'space', 'backspace', 'tab', 'esc', 'plus', 'minus', '#'];
 
 const getDisplayKey = (key: string) => {
   return transformKeys([platformPreprocess(key, platform.value)])[0]
@@ -27,16 +27,19 @@ const getDisplayKey = (key: string) => {
 <style lang="scss" scoped>
 .checker-controls {
   width: 100%;
+  padding: 0 1rem;
   margin: 4rem auto 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
 
   &__keys {
     display:flex;
     align-items: center;
     justify-content: flex-end;
     gap: 0.625rem;
+    flex-wrap: wrap;
 
     :deep(.small-key) {
       box-shadow: none;

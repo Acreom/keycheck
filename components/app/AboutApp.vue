@@ -85,7 +85,7 @@ const matches = computed(() => $apps.$getMatchesCount(currentApp.value.id));
 
         &__redirect-icon {
           color: $white;
-          height: 1.65rem;
+          height: 1.75rem;
           margin-left: 3.25rem;
           margin-bottom: 2.5625rem;
         }

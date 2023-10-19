@@ -1,6 +1,6 @@
 <template>
   <h2>{{count}} apps . MIT License . Open Source</h2>
-  <h1>Keyboard Shortcut Checker</h1>
+  <h1>Keycheck.dev</h1>
 </template>
 <script setup lang="ts">
 const { $apps } = useNuxtApp();

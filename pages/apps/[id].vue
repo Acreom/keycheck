@@ -36,8 +36,8 @@ if (!$apps.$getApps().find(app => app.id === id)) {
 const description = computed(() => `Browse ${Object.keys(shortcuts.value).length} Shortcuts of ${currentApp.value.name}. Check for Conflicts When Designing Your Own Shortcuts.`);
 const title = computed(() => `${currentApp.value.name} - Browse ${Object.keys(shortcuts.value).length} Shortcuts | ${WEBSITE}`);
 const ogImageOptions = {
-  title,
-  provider: 'browser'
+  title: title.value.split(' | ')[0],
+  description: description.value,
 }
 
 defineOgImage(ogImageOptions)

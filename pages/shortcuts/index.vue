@@ -3,7 +3,7 @@
   <div class="switcher-wrapper">
     <PlatformSwitcher />
   </div>
-  <ShortcutsList :shortcuts="allShortcuts" />
+  <ShortcutsList :shortcuts="allShortcuts" :group-by-shortcut="true" />
 </template>
 <script setup lang="ts">
 import ShortcutsList from "~/components/list/shortcuts/ShortcutsList.vue";
@@ -15,8 +15,8 @@ const allShortcuts = computed(() => $apps.$getApps().reduce((acc, app) => ({...a
 const description = computed(() => `Browse ${Object.keys(allShortcuts.value).length} Shortcuts. Check for Conflicts When Designing Your Own Shortcuts.`);
 const title = computed(() => `Browse ${Object.keys(allShortcuts.value).length} Shortcuts | ${WEBSITE}`);
 const ogImageOptions = {
-  title,
-  provider: 'browser'
+  title: title.value.split(' | ')[0],
+  description: description.value
 }
 
 defineOgImage(ogImageOptions)

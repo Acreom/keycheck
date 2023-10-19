@@ -2,12 +2,25 @@ html {
   font-size: 16px;
 
   @media(max-width: 768px) {
-    font-size: 14px
+    font-size: 13px
   }
 
   @media(max-width: 480px) {
-    font-size: 12px;
+    font-size: 11px;
   }
+
+  @media(max-width: 408px) {
+    font-size: 9px;
+  }
+
+  @media(max-width: 340px) {
+    font-size: 7px;
+  }
+
+  @media(max-width: 270px) {
+    font-size: 5px;
+  }
+
 }
 
 body {

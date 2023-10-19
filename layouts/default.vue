@@ -10,7 +10,6 @@
 const isMobile = useState('isMobile', () => false);
 const getDeviceType = () => {
   const ua = navigator.userAgent;
-  console.log('device type', ua);
   if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
     return "tablet";
   }

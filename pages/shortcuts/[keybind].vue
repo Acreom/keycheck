@@ -18,15 +18,14 @@ const matches = computed(
               ...macMatches.map((match: any) => `${match.name}-${match.description}`)
           ]
       );
-      console.log('merged', merged);
       return Array.from(merged).filter((match: any) => !match.partial).length;
     }
 );
 const description = computed(() => `Browse ${matches.value} matches of the ${keybind.value} shortcut. Check for conflicts when designing your own shortcuts.`);
 const title = computed(() => `${keybind.value} - Browse ${matches.value} matches | ${WEBSITE}`);
 const ogImageOptions = {
-  title,
-  provider: 'browser'
+  title: title.value.split(' | ')[0],
+  description: description.value
 }
 
 defineOgImage(ogImageOptions)

@@ -1,63 +1,39 @@
-# Nuxt 3 Minimal Starter
+# Keycheck.dev
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Check the availability of shortcuts for your app and seamlessly match them with any of the supported applications.
 
-## Setup
+## Local Setup
+
+**Clone** your forked repository to your local machine:
+
+```shell
+git clone https://github.com/acreom/keycheck.git
+```
 
 Make sure to install the dependencies:
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
+# npm / pnpm / yarn
+[npm | pnmp | yarn] install
 ```
 
-## Development Server
+### Development Server
 
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
+# npm / pnpm
+[npm | pnpm] run dev
 
-# pnpm
-pnpm run dev
-
-# yarn
+# yarn 
 yarn dev
 ```
 
-## Production
+## Reporting Issues / Feedback
+Please open an issue [here](https://github.com/Acreom/keycheck/issues/new).
 
-Build the application for production:
+## Contributing
+Please check out the [contributing guide](CONTRIBUTING.md) for more details.
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## License
+[MIT](LICENSE)

@@ -2,7 +2,6 @@
   <div class="shortcuts-checker">
     <AppTitle />
     <CheckerCapture />
-    <AppAbout />
   </div>
 </template>
 <script setup lang="ts">
@@ -14,8 +13,8 @@ const allShortcuts = computed(() => $apps.$getApps().reduce((acc, app) => ({...a
 const description = computed(() => `Browse ${Object.keys(allShortcuts.value).length} Shortcuts Across ${count.value} Apps for Developers. Check for Conflicts When Designing Your Own Shortcuts.`);
 const title = computed(() => `Check Shortcuts of ${count.value} Apps | ${WEBSITE}`);
 const ogImageOptions = {
-  title,
-  provider: 'browser'
+  title: title.value.split(' | ')[0],
+  description: description.value
 }
 
 defineOgImage(ogImageOptions)

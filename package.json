@@ -1,5 +1,5 @@
 {
-  "name": "shortcuts-checker",
+  "name": "keycheck.dev",
   "private": true,
   "scripts": {
     "build": "nuxt build",

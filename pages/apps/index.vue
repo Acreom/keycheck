@@ -11,8 +11,8 @@ const count = computed(() => $apps.$getApps().length);
 const description = computed(() => `Browse Shortcuts of ${count.value} Apps for Developers. Check for Conflicts When Designing Your Own Shortcuts.`);
 const title = computed(() => `Browse ${count.value} Apps | ${WEBSITE}`);
 const ogImageOptions = {
-  title,
-  provider: 'browser'
+  title: title.value.split(' | ')[0],
+  description: description.value
 }
 
 defineOgImage(ogImageOptions)

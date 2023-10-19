@@ -1,6 +1,5 @@
 <template>
   <div class="checker-wrapper">
-    <input ref="mobileInput" placeholder="Mobile Input" autocapitalize="none" v-if="isMobile" />
     <div class="checker-wrapper__checker">
       <button class="checker-wrapper__close" @click="clear">
         <CloseIcon class="icon" />
@@ -23,30 +22,31 @@
           @focus="onFocusChanged"
       />
     </div>
+    <input ref="mobileInput" placeholder="Mobile Input" autocapitalize="none" v-if="isMobile" />
   </div>
   <CheckerCaptureControls @input="onInputKey"/>
   <CheckerSearch v-if="capturedKeys.length" :query="capturedKeys" />
 </template>
 <script setup lang="ts">
-import {extractKeys, transformKeys} from "~/helpers/shortcuts";
+import {extractKeys, transformKeys, platformPreprocessCapturedKeys } from "~/helpers/shortcuts";
 import CloseIcon from "@/assets/icons/CloseIcon.svg?component";
 import CheckerCaptureControls from "@/components/checker/CheckerCaptureControls.vue";
-import {platformPreprocess} from "~/helpers/shortcuts";
 import Key from "~/components/checker/Key.vue";
 
 const mobileInput = ref<HTMLInputElement | null>(null);
-
-const route = useRoute();
-const router = useRouter();
 
 const platform = useState('platform', () => "mac");
 const isMobile = useState('isMobile', () => false);
 
 const focusedIndex = ref<number>(0);
-const capturedKeys = ref<string[]>([]);
+
+const capturedRaw = ref<string[]>([]);
+const capturedKeys = computed(() => {
+  return platformPreprocessCapturedKeys(capturedRaw.value);
+});
 
 const clear = () => {
-  capturedKeys.value = [];
+  capturedRaw.value = [];
   focusedIndex.value = 0;
 }
 
@@ -58,13 +58,13 @@ const onFocusChanged = (index: number) => {
 }
 
 const onInputKey = (key: string) => {
-if (focusedIndex.value === capturedKeys.value.length) {
+if (focusedIndex.value === capturedRaw.value.length) {
     focusedIndex.value += 1;
   }
-  if (focusedIndex.value < capturedKeys.value.length) {
-    capturedKeys.value.splice(focusedIndex.value, 1, key);
+  if (focusedIndex.value < capturedRaw.value.length) {
+    capturedRaw.value.splice(focusedIndex.value, 1, key);
   } else {
-    capturedKeys.value.push(key);
+    capturedRaw.value.push(key);
   }
 }
 
@@ -72,28 +72,19 @@ const onInput = (event: KeyboardEvent, index: number) => {
   event.preventDefault();
   event.stopPropagation();
   event.stopImmediatePropagation();
-  const key = [...extractKeys(event ?? null)].filter(key => !capturedKeys.value.includes(key))[0];
+  const key = [...extractKeys(event ?? null)].filter(key => !capturedRaw.value.includes(key))[0];
   if (!key) {
     return;
   }
-  if (focusedIndex.value === capturedKeys.value.length) {
+  if (focusedIndex.value === capturedRaw.value.length) {
     focusedIndex.value += 1;
   }
-  if (index < capturedKeys.value.length) {
-    capturedKeys.value.splice(index, 1, key);
+  if (index < capturedRaw.value.length) {
+    capturedRaw.value.splice(index, 1, key);
   } else {
-    capturedKeys.value.push(key);
+    capturedRaw.value.push(key);
   }
 }
-
-// @ts-ignore
-onMounted(() => {
-  if (route.params?.keybind) {
-    capturedKeys.value = platformPreprocess(route.params.keybind, platform.value).split('+');
-    focusedIndex.value = capturedKeys.value.length;
-    router.replace({params: {}});
-  }
-})
 </script>
 <style lang="scss" scoped>
 .checker-wrapper {
@@ -102,6 +93,15 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+
+  input {
+    margin-top: 1rem;
+    outline: none;
+    border-radius: 6px;
+    padding: 0 0.5rem;
+    background: $dark-20;
+  }
 
   &__close {
     position: absolute;

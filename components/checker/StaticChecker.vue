@@ -15,20 +15,22 @@
   <CheckerSearch v-if="capturedKeys.length" :query="capturedKeys" :include-partial-matches="false" />
 </template>
 <script setup lang="ts">
-import { transformKeys} from "~/helpers/shortcuts";
-import {platformPreprocess} from "~/helpers/shortcuts";
+import { transformKeys, platformPreprocessCapturedKeys, platformPreprocess, routeToCaturedKeys } from "~/helpers/shortcuts";
 import Key from "~/components/checker/Key.vue";
 
 const route = useRoute();
 const router = useRouter();
 
 const platform = useState('platform', () => "mac");
-const capturedKeys = ref<string[]>([]);
+const capturedRaw = ref<string[]>([]);
+const capturedKeys = computed(() => {
+  return platformPreprocessCapturedKeys(capturedRaw.value);
+});
 
 // @ts-ignore
 onMounted(() => {
   if (route.params?.keybind) {
-    capturedKeys.value = platformPreprocess(route.params.keybind as string, platform.value).split('+');
+    capturedRaw.value = platformPreprocess(routeToCaturedKeys(route.params.keybind as string), platform.value).split('+');
     router.replace({params: {}});
   }
 })

@@ -4,6 +4,7 @@
       <Result v-for="result of fullMatches" :result="result" />
       <p v-if="partialMatches.length">Similar Results</p>
       <Result v-for="result of partialMatchesCutoff" :result="result" />
+      <ContributionCTA>Don't see your shortcut? Learn how to add more shortcuts.</ContributionCTA>
     </div>
     <div class="search__show-more">
       <button v-if="partialMatches.length && cutoff < partialMatches.length" @click="showAll">Show More</button>
@@ -53,7 +54,7 @@ const showAll = () => {
 <style lang="scss" scoped>
 .search {
   margin-top: 2rem;
-
+  padding: 0 0.5rem;
 
   &__results {
     @include list(1.75rem);

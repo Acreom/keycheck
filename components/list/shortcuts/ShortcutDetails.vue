@@ -1,6 +1,6 @@
 <template>
   <div class="shortcut-details" @click="onClick">
-    <div class="shortcut-details__wrapper">
+    <div class="shortcut-details__wrapper" :class="{'shortcut-details__wrapper--reverse': reverse}">
       <div class="shortcut-details__description">{{description}}</div>
       <div class="shortcut-details__keybind">
         <SmallKey v-for="key in resultKeys" :key="key">
@@ -16,7 +16,8 @@ import {transformKeys, platformPreprocess} from "~/helpers/shortcuts";
 const props = defineProps({
   keybind: { type: String, required: true },
   description: {type: String, required: true},
-  link: {type: Boolean, default: false}
+  link: {type: Boolean, default: false},
+  reverse: {type: Boolean, default: false}
 });
 
 const platform = useState('platform', () => "mac");
@@ -29,7 +30,7 @@ const onClick = () => {
   if (props.link) {
     const router = useRouter();
     router.push({
-      path: encodeURI(`/shortcuts/${props.keybind?.toLowerCase()}`),
+      path: `/shortcuts/${encodeURIComponent(props.keybind?.toLowerCase())}`,
     })
   }
 }
@@ -41,6 +42,18 @@ const onClick = () => {
   &__wrapper {
     @include listItemWrapper;
     grid-template-columns: 1fr minmax(1.75rem, 6.25rem);
+
+    &--reverse {
+      grid-template-columns: minmax(1.75rem, 6.25rem) 1fr;
+
+      .shortcut-details__description {
+        order: 1;
+        text-align: right;
+      }
+      .shortcut-details__keybind {
+        justify-content: flex-start;
+      }
+    }
   }
 
   &__description {
@@ -56,6 +69,7 @@ const onClick = () => {
     display: flex;
     align-items: center;
     gap: 8px;
+    justify-content: flex-end;
   }
 }
 </style>

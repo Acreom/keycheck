@@ -21,8 +21,7 @@ function transformKeys(keys: string[]) {
   return keys.map((key: string) => {
     key = key.toLowerCase();
     if (key === "meta") {
-      const platform = useState("platform", () => "mac").value;
-      return platform === "mac" ? "⌘" : "⊞";
+      return "⌘";
     }
     if (Object.keys(keysMap).includes(key)) {
       return keysMap[key];
@@ -106,7 +105,12 @@ function getModifiers(event: KeyboardEvent) {
     modifiers.push("ctrl");
   }
   if (event.metaKey) {
-    modifiers.push("meta");
+    const platform = useState("platform", () => "mac").value;
+    if (platform === "mac") {
+      modifiers.push("meta");
+    } else {
+      modifiers.push("win");
+    }
   }
   return modifiers;
 }
@@ -119,18 +123,54 @@ function extractKeys(event: KeyboardEvent | null) {
   return [...new Set(keys)];
 }
 
+function normalizeModifierKeys(keys: string) {
+  const keysArray = keys.split("+");
+  const modifiers = keysArray.slice(0, -1);
+  const key = keysArray[keysArray.length - 1];
+  const normalized = modifiers.sort(
+    (a: string, b: string) => a.localeCompare(b) * -1,
+  );
+  return normalized.length ? normalized.join("+") + "+" + key : key;
+}
+
+function platformPreprocessCapturedKeys(keys: string[]) {
+  return keys.map((key) => {
+    if (key === "meta") {
+      const platform = useState("platform", () => "mac").value;
+      return platform === "mac" ? "meta" : "ctrl";
+    }
+    return key;
+  });
+}
+
+function routeToCaturedKeys(keys: string) {
+  return keys
+    .split("+")
+    .map((key) => {
+      if (key.toLowerCase() === "cmdorctrl") {
+        return "meta";
+      }
+      return key;
+    })
+    .join("+");
+}
+
 function platformPreprocess(shortcut: string, platform: "mac" | "win") {
-  const generalPreprocessed = shortcut
-    .toLowerCase()
-    .replace(/(return)/g, "enter");
+  const generalPreprocessed = normalizeModifierKeys(
+    shortcut.toLowerCase(),
+  ).replace(/(return)/g, "enter");
   if (platform === "win") {
-    return generalPreprocessed
-      .replace(/win/g, "meta")
-      .replace(/(cmdorctrl)/g, "ctrl");
+    return generalPreprocessed.replace(/(cmdorctrl)/g, "ctrl");
   }
   return generalPreprocessed
     .replace(/(cmdorctrl)/g, "meta")
     .replace(/(cmd)/g, "meta");
 }
 
-export { extractKeys, transformKeys, platformPreprocess };
+export {
+  extractKeys,
+  transformKeys,
+  platformPreprocess,
+  platformPreprocessCapturedKeys,
+  routeToCaturedKeys,
+};
