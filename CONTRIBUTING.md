@@ -35,7 +35,7 @@ Make your desired changes or contributions to the code.
 
 Keep your changes focused and concise. Avoid making unrelated changes in a single pull request.
 
-There is no code style guide, but please write clean and readable code.
+Always use typescript and type wherever possible. There is no special code style guide, but please write clean and readable code.
 
 Write clear and meaningful commit messages.
 
@@ -52,7 +52,11 @@ When adding shortcuts of a new app, please follow the steps below:
 
 #### App Config File Structure
 
-When in doubt, have a look at the other app config files in the `/known-shortcuts` folder. Generally though, the structure is as follows:
+The config file **must** have the following fields: `id`, `name`, `icon`, `homepage`, `description`, `globals` (can be left as empty object if no shortcuts can clash with system shortcuts), `shortcuts`.
+
+When in doubt, have a look at the other app config files in the `/known-shortcuts` folder. 
+
+The file would look something like this:
 
 ```typescript
 const app = {

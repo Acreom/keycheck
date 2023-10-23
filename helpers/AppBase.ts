@@ -6,8 +6,8 @@ export interface AppParams {
   icon: string;
   homepage: string;
   shortcuts: Record<string, string>;
-  globals?: Record<string, string>;
-  description?: string;
+  globals: Record<string, string>;
+  description: string;
 }
 
 export interface Result {
@@ -30,8 +30,20 @@ export class App {
     this.name = params.name;
     this.icon = params.icon;
     this.homepage = params.homepage;
-    this.shortcuts = params.shortcuts;
-    this.globals = params.globals ?? {};
+    this.shortcuts = Object.keys(params.shortcuts).reduce(
+      (acc, keybind) => {
+        acc[keybind.toLowerCase()] = params.shortcuts[keybind];
+        return acc;
+      },
+      {} as Record<string, string>,
+    );
+    this.globals = Object.keys(params.globals ?? {}).reduce(
+      (acc, keybind) => {
+        acc[keybind.toLowerCase()] = params.globals![keybind];
+        return acc;
+      },
+      {} as Record<string, string>,
+    );
     this.description = params.description ?? "No description provided";
   }
 

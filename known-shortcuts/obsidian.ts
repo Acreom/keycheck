@@ -5,6 +5,7 @@ const app = {
   homepage: "https://obsidian.md",
   description:
     'Obsidian is a note-taking and knowledge management software tool that is designed for individuals who want to create a digital knowledge base and connect ideas and information in a structured way. It is often described as a "second brain" or "thought organizer" because it allows users to build a network of interconnected notes, thoughts, and references.',
+  globals: {},
   shortcuts: {
     "cmdOrCtrl+W": "Close current tab",
     "cmdOrCtrl+shift+W": "Close window",

@@ -9,9 +9,6 @@
     <div class="app-detail__stats">
       <AboutApp />
     </div>
-    <div class="app-detail__platform">
-      <PlatformSwitcher />
-    </div>
     <ShortcutsList :shortcuts="shortcuts" />
   </div>
 </template>

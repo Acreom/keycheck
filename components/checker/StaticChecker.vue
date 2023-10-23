@@ -9,9 +9,6 @@
       />
     </div>
   </div>
-  <div class="static-checker__controls">
-    <PlatformSwitcher />
-  </div>
   <CheckerSearch v-if="capturedKeys.length" :query="capturedKeys" :include-partial-matches="false" />
 </template>
 <script setup lang="ts">
@@ -21,7 +18,7 @@ import Key from "~/components/checker/Key.vue";
 const route = useRoute();
 const router = useRouter();
 
-const platform = useState('platform', () => "mac");
+const platform = useState('platform', (): 'mac' | 'win' => 'mac');
 const capturedRaw = ref<string[]>([]);
 const capturedKeys = computed(() => {
   return platformPreprocessCapturedKeys(capturedRaw.value);

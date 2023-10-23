@@ -20,7 +20,7 @@ const props = defineProps({
   reverse: {type: Boolean, default: false}
 });
 
-const platform = useState('platform', () => "mac");
+const platform = useState('platform', (): 'mac' | 'win' => 'mac');
 
 const resultKeys = computed(() => {
   return transformKeys(platformPreprocess(props.keybind, platform.value).split('+'));

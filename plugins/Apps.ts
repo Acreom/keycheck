@@ -28,7 +28,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     },
     $getMatchesCount: (appId: string) => {
       const app = apps.value.find((app) => app.id === appId);
-      const platform = useState("platform", () => "mac");
+      const platform = useState("platform", (): "mac" | "win" => "mac");
       if (!app) return [];
       return Object.keys(app.shortcuts).reduce((acc: number, val: string) => {
         return (

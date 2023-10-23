@@ -22,7 +22,11 @@ const getDeviceType = () => {
   }
   return "desktop";
 };
+
+const { $search } = useNuxtApp();
+
 onMounted(() => {
+  $search.$index();
   if (!navigator) return;
   isMobile.value = getDeviceType() === 'mobile';
 })

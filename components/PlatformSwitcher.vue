@@ -7,7 +7,6 @@
     <button @click="setPlatform('win')" :class="{active: platform === 'win'}">
       <WindowsIcon class="icon" />
     </button>
-
   </div>
 </template>
 <script setup lang="ts">
@@ -27,7 +26,7 @@ const setPlatform = (value: 'win' | 'mac') => {
   justify-content: space-between;
 
   border-radius: 82px;
-  background: rgba(27, 28, 31, 0.58);
+  background: rgba(27, 28, 31, 0.75);
   backdrop-filter: blur(12px);
 
   &__divider {
@@ -42,10 +41,10 @@ const setPlatform = (value: 'win' | 'mac') => {
     justify-content: center;
     outline: none;
 
-    padding: 1rem 2.125rem 1rem 2.5rem;
+    padding: 0.65rem 2.125rem 0.65rem 2.5rem;
 
     &:last-of-type {
-      padding: 1rem 2.5rem 1rem 2.125rem;
+      padding: 0.65rem 2.5rem 0.65rem 2.125rem;
     }
 
     &:hover {

@@ -18,8 +18,8 @@ async function buildShortcutRoutes() {
   const uniqueShortcuts = new Set<string>();
   appConfigs.forEach((app: any) => {
     Object.keys(app.shortcuts).forEach((shortcut: string) => {
-      const winShortcut = shortcut.toLowerCase().replace(/cmdorctrl/g, "ctrl");
-      const macShortcut = shortcut.toLowerCase().replace(/cmdorctrl/g, "cmd");
+      const winShortcut = shortcut.replace(/cmdorctrl/g, "ctrl");
+      const macShortcut = shortcut.replace(/cmdorctrl/g, "cmd");
       if (
         winShortcut !== shortcut &&
         macShortcut !== shortcut &&

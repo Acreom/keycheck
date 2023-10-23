@@ -48,4 +48,17 @@ export default defineNuxtConfig({
     disallow: [],
     allow: "/",
   },
+  hooks: {
+    async "nitro:config"(nitroConfig) {
+      if (nitroConfig.dev) {
+        return;
+      }
+      const appRoutes = await buildAppRoutes();
+      const shortcutRoutes = await buildShortcutRoutes();
+      const allRoutes = [...appRoutes, ...shortcutRoutes].map(
+        (route) => route.loc,
+      );
+      nitroConfig.prerender!.routes!.push(...allRoutes);
+    },
+  },
 });

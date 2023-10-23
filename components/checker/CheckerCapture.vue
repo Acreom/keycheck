@@ -72,10 +72,20 @@ const onInput = (event: KeyboardEvent, index: number) => {
   event.preventDefault();
   event.stopPropagation();
   event.stopImmediatePropagation();
+  if (event.key === 'Backspace' || event.key === 'Delete') {
+    if (index === 0) {
+      clear();
+    } else {
+      capturedRaw.value.splice(index , 1);
+      focusedIndex.value -= 1;
+    }
+    return;
+  }
   const key = [...extractKeys(event ?? null)].filter(key => !capturedRaw.value.includes(key))[0];
   if (!key) {
     return;
   }
+
   if (focusedIndex.value === capturedRaw.value.length) {
     focusedIndex.value += 1;
   }

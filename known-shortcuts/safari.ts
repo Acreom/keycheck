@@ -5,6 +5,7 @@ const app = {
   homepage: "https://apple.com/safari",
   description:
     "Safari is a web browser developed by Apple. It is the default web browser for Apple's macOS and iOS operating systems, as well as for iPadOS. Safari is known for its speed, efficiency, and seamless integration with Apple's ecosystem of devices and services. It's designed to provide users with a fast and secure web browsing experience.",
+  globals: {},
   shortcuts: {
     "Shift+up": "Scroll up",
     "Shift+down": "Scroll down",

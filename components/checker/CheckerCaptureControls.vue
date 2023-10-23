@@ -1,6 +1,5 @@
 <template>
   <div class="checker-controls">
-    <PlatformSwitcher />
     <div class="checker-controls__keys">
       <button
           v-for="key of keys"
@@ -15,9 +14,9 @@
 import {platformPreprocess, transformKeys} from "../../helpers/shortcuts";
 
 const emit = defineEmits(['input']);
-const platform = useState('platform', () => "mac");
+const platform = useState('platform', (): 'mac' | 'win' => 'mac');
 
-const keys = ['win', 'meta', 'ctrl', 'alt', 'shift', 'up', 'down', 'left', 'right', 'enter', 'space', 'backspace', 'tab', 'esc', 'plus', 'minus', '#'];
+const keys = ['win', 'meta', 'ctrl', 'alt', 'shift', 'up', 'down', 'left', 'right', 'enter', 'space', 'backspace', 'delete', 'tab', 'esc', 'plus', 'minus', '#'];
 
 const getDisplayKey = (key: string) => {
   return transformKeys([platformPreprocess(key, platform.value)])[0]

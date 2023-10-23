@@ -5,6 +5,7 @@ const app = {
   homepage: "https://linear.app",
   description:
     "Linear is an issue tracking tool built for speed. It helps users streamline software projects, tasks, and bug tracking.",
+  globals: {},
   shortcuts: {
     "cmdOrCtrl+K": "Open command menu",
     "cmdOrCtrl+Enter": "Save or submit",
@@ -82,7 +83,7 @@ const app = {
     "M+X": "Mark as blocking",
     "M+R": "Reference related issue",
     "M+M": "Merge into another issue",
-    "ctrl+L": "Link any URL to issue…",
+    "ctrl+L": "Link any URL to issue",
     F: "Filter issues",
     "shift+F": "Clear last issue filter",
     "alt+shift+F": "Clear all issue filters",

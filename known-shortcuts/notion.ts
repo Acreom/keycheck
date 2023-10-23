@@ -5,6 +5,7 @@ const app = {
   homepage: "https://notion.so",
   description:
     "Notion is a versatile software application that serves as an all-in-one workspace and productivity tool. It's designed to help individuals and teams organize, collaborate, and manage various tasks, projects, and information in a unified digital environment. Notion provides a flexible and customizable platform that can adapt to a wide range of personal and professional use cases.",
+  globals: {},
   shortcuts: {
     "cmdOrCtrl+N": "Create a new page (desktop only)",
     "cmdOrCtrl+Shift+N": "Open a new Notion window",

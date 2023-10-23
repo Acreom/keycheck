@@ -5,6 +5,7 @@ const app = {
   homepage: "https://www.google.com/chrome",
   description:
     "Chrome is a web browser developed by Google. It was first released in 2008 and has since become one of the most popular web browsers in the world. Chrome is available for multiple operating systems, including Windows, macOS, Linux, Android, and iOS.",
+  globals: {},
   shortcuts: {
     "cmdOrCtrl+N": "Open a new window",
     "shift+cmdOrCtrl+N": "Open a new window in Incognito mode",
