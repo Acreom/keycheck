@@ -11,16 +11,23 @@ const keysMap: Record<string, string> = {
   enter: "↵",
   backspace: "⌫",
   tab: "↹",
-  escape: "esc",
+  escape: "⎋",
+  esc: "⎋",
   powerButton: "⏻",
   plus: "+",
   minus: "-",
+  win: "⊞",
+  delete: "␡",
+  home: "↖",
+  end: "↘",
+  pageup: "⇞",
+  pagedown: "⇟",
 };
 
 function transformKeys(keys: string[]) {
   return keys.map((key: string) => {
     key = key.toLowerCase();
-    if (key === "meta") {
+    if (key === "meta" || key === "cmd") {
       return "⌘";
     }
     if (Object.keys(keysMap).includes(key)) {
@@ -143,7 +150,7 @@ function platformPreprocessCapturedKeys(keys: string[]) {
   });
 }
 
-function routeToCaturedKeys(keys: string) {
+function routeToCapturedKeys(keys: string) {
   return keys
     .split("+")
     .map((key) => {
@@ -156,15 +163,20 @@ function routeToCaturedKeys(keys: string) {
 }
 
 function platformPreprocess(shortcut: string, platform: "mac" | "win") {
-  const generalPreprocessed = normalizeModifierKeys(
-    shortcut.toLowerCase(),
-  ).replace(/(return)/g, "enter");
+  const generalPreprocessed = normalizeModifierKeys(shortcut.toLowerCase())
+    .replace(/(return)/g, "enter")
+    .replace(/(pgup)/g, "pageup")
+    .replace(/(pgdn)/g, "pagedown")
+    .replace(/(pgdown)/g, "pagedown");
   if (platform === "win") {
-    return generalPreprocessed.replace(/(cmdorctrl)/g, "ctrl");
+    return generalPreprocessed
+      .replace(/(cmdorctrl)/g, "ctrl")
+      .replace(/(cmd)/g, "meta");
   }
   return generalPreprocessed
     .replace(/(cmdorctrl)/g, "meta")
     .replace(/(cmd)/g, "meta");
+  // .replace(/(cmd)/g, "meta");
 }
 
 export {
@@ -172,5 +184,5 @@ export {
   transformKeys,
   platformPreprocess,
   platformPreprocessCapturedKeys,
-  routeToCaturedKeys,
+  routeToCapturedKeys,
 };

@@ -2,23 +2,32 @@
   <div class="static-checker">
     <div class="static-checker__checker">
       <Key
-          v-for="(key, index) of capturedKeys"
-          :key="key"
-          :captured-key="transformKeys([key])[0]"
-          :key-index="index"
+        v-for="(key, index) of capturedKeys"
+        :key="key"
+        :captured-key="transformKeys([key])[0]"
+        :key-index="index"
       />
     </div>
   </div>
-  <CheckerSearch v-if="capturedKeys.length" :query="capturedKeys" :include-partial-matches="false" />
+  <CheckerSearch
+    v-if="capturedKeys.length"
+    :query="capturedKeys"
+    :include-partial-matches="false"
+  />
 </template>
 <script setup lang="ts">
-import { transformKeys, platformPreprocessCapturedKeys, platformPreprocess, routeToCaturedKeys } from "~/helpers/shortcuts";
+import {
+  transformKeys,
+  platformPreprocessCapturedKeys,
+  platformPreprocess,
+  routeToCapturedKeys,
+} from "~/helpers/shortcuts";
 import Key from "~/components/checker/Key.vue";
 
 const route = useRoute();
 const router = useRouter();
 
-const platform = useState('platform', (): 'mac' | 'win' => 'mac');
+const platform = useState("platform", (): "mac" | "win" => "mac");
 const capturedRaw = ref<string[]>([]);
 const capturedKeys = computed(() => {
   return platformPreprocessCapturedKeys(capturedRaw.value);
@@ -27,10 +36,13 @@ const capturedKeys = computed(() => {
 // @ts-ignore
 onMounted(() => {
   if (route.params?.keybind) {
-    capturedRaw.value = platformPreprocess(routeToCaturedKeys(route.params.keybind as string), platform.value).split('+');
-    router.replace({params: {}});
+    capturedRaw.value = platformPreprocess(
+      routeToCapturedKeys(route.params.keybind as string),
+      platform.value,
+    ).split("+");
+    router.replace({ params: {} });
   }
-})
+});
 </script>
 <style lang="scss" scoped>
 .static-checker {
