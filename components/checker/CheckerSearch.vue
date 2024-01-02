@@ -4,52 +4,61 @@
       <Result v-for="result of fullMatches" :result="result" />
       <p v-if="partialMatches.length">Similar Results</p>
       <Result v-for="result of partialMatchesCutoff" :result="result" />
-      <ContributionCTA>Don't see your shortcut? Learn how to add more shortcuts.</ContributionCTA>
+      <ContributionCTA
+        >Don't see your shortcut? Learn how to contribute.</ContributionCTA
+      >
     </div>
     <div class="search__show-more">
-      <button v-if="partialMatches.length && cutoff < partialMatches.length" @click="showAll">Show More</button>
+      <button
+        v-if="partialMatches.length && cutoff < partialMatches.length"
+        @click="showAll"
+      >
+        Show More
+      </button>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import Result from "~/components/checker/Result.vue";
 
-const {$apps} = useNuxtApp();
+const { $apps } = useNuxtApp();
 const props = defineProps({
   query: { type: Array<String>, required: true },
-  includePartialMatches: { type: Boolean, default: true }
-})
+  includePartialMatches: { type: Boolean, default: true },
+});
 const cutoff = ref<number>(10);
 const platform = useState("platform", () => "mac");
 const matches = computed(() => {
-  return $apps.$getShortcutsMatches(props.query.join('+').toLowerCase(), platform.value);
+  return $apps.$getShortcutsMatches(
+    props.query.join("+").toLowerCase(),
+    platform.value,
+  );
 });
 
 const fullMatches = computed(() => {
-  return matches.value.filter((match: any) => !match.partial)
+  return matches.value.filter((match: any) => !match.partial);
 });
 
 const partialMatches = computed(() => {
   if (!props.includePartialMatches) return [];
-  return matches.value.filter((match: any) => match.partial)
+  return matches.value.filter((match: any) => match.partial);
 });
 
 const partialMatchesCutoff = computed(() => {
   if (!props.includePartialMatches) return [];
-  return matches.value.filter((match: any) => match.partial).slice(0, cutoff.value)
+  return matches.value
+    .filter((match: any) => match.partial)
+    .slice(0, cutoff.value);
 });
 
-watch(
-    partialMatches,
-    (val, prevVal) => {
-      if (val.length !== prevVal.length) {
-        cutoff.value = 10;
-      }
-    }
-)
+watch(partialMatches, (val, prevVal) => {
+  if (val.length !== prevVal.length) {
+    cutoff.value = 10;
+  }
+});
 const showAll = () => {
   cutoff.value = partialMatches.value.length;
-}
+};
 </script>
 <style lang="scss" scoped>
 .search {
@@ -62,7 +71,7 @@ const showAll = () => {
     p {
       @include p(Inter);
       padding: 2.0625rem 1.5rem 1.125rem;
-      color: #A3C6E6;
+      color: #a3c6e6;
     }
   }
 

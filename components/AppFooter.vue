@@ -1,6 +1,5 @@
 <template>
   <div class="footer">
-    <nuxt-link to="https://acreom.com" target="_blank">made by acreom</nuxt-link>
     <div class="links">
       <nuxt-link to="/about">About</nuxt-link>
     </div>
@@ -34,6 +33,5 @@
       color: $linkActive;
     }
   }
-
 }
 </style>
