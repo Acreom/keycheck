@@ -1,22 +1,6 @@
 import { platformPreprocess } from "~/helpers/shortcuts";
+import { AppParams, Result } from "~/types";
 
-export interface AppParams {
-  id: string;
-  name: string;
-  icon: string;
-  homepage: string;
-  shortcuts: Record<string, string>;
-  globals: Record<string, string>;
-  description: string;
-}
-
-export interface Result {
-  global: boolean;
-  icon: string;
-  name: string;
-  description: string;
-  keys: string;
-}
 export class App {
   public id: string;
   name: string;
@@ -25,6 +9,7 @@ export class App {
   shortcuts: Record<string, string>;
   globals: Record<string, string>;
   description?: string;
+
   constructor(params: AppParams) {
     this.id = params.id;
     this.name = params.name;
@@ -73,27 +58,34 @@ export class App {
         this.hasFullMatch(platformPreprocess(key, platform), input),
       )
       .map((match) => ({
+        app: {
+          icon: this.icon,
+          name: this.name,
+        },
+        redirect: `/apps/${this.id}/`,
         global: true,
-        icon: this.icon,
-        name: this.name,
         id: this.id,
         description: this.globals[match],
         keys: platformPreprocess(match, platform),
         partial: false,
-      }));
+      })) as Result[];
     const partialMatches = Object.keys(this.globals!)
       .filter((key) =>
         this.hasPartialMatch(platformPreprocess(key, platform), input),
       )
       .map((match) => ({
+        app: {
+          icon: this.icon,
+          name: this.name,
+        },
+        redirect: `/apps/${this.id}/`,
         global: true,
-        icon: this.icon,
-        name: this.name,
         id: this.id,
+        icon: this.icon,
         description: this.globals[match],
         keys: platformPreprocess(match, platform),
         partial: true,
-      }));
+      })) as Result[];
     return [...fullMatches, ...partialMatches];
   }
 
@@ -103,27 +95,33 @@ export class App {
         this.hasFullMatch(platformPreprocess(key, platform), input),
       )
       .map((match) => ({
+        app: {
+          icon: this.icon,
+          name: this.name,
+        },
+        redirect: `/apps/${this.id}/`,
         global: false,
-        icon: this.icon,
-        name: this.name,
         id: this.id,
         description: this.shortcuts[match],
         keys: platformPreprocess(match, platform),
         partial: false,
-      }));
+      })) as Result[];
     const partialMatches = Object.keys(this.shortcuts!)
       .filter((key) =>
         this.hasPartialMatch(platformPreprocess(key, platform), input),
       )
       .map((match) => ({
+        app: {
+          icon: this.icon,
+          name: this.name,
+        },
+        redirect: `/apps/${this.id}/`,
         global: false,
-        icon: this.icon,
-        name: this.name,
         id: this.id,
         description: this.shortcuts[match],
         keys: platformPreprocess(match, platform),
         partial: true,
-      }));
+      })) as Result[];
     return [...fullMatches, ...partialMatches];
   }
 }

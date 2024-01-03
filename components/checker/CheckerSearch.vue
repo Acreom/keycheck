@@ -1,20 +1,37 @@
 <template>
   <div class="search">
     <div class="search__results">
-      <Result v-for="result of fullMatches" :result="result" />
-      <p v-if="partialMatches.length">Similar Results</p>
-      <Result v-for="result of partialMatchesCutoff" :result="result" />
-      <ContributionCTA
-        >Don't see your shortcut? Learn how to contribute.</ContributionCTA
-      >
-    </div>
-    <div class="search__show-more">
+      <p>
+        {{ fullMatches.length }} result{{ fullMatches.length === 1 ? "" : "s" }}
+      </p>
+      <div class="search__results__empty" v-if="!fullMatches.length">
+        No Exact Matches Found
+      </div>
+      <Result
+        v-for="result of fullMatches"
+        :key="`${result.id}-${result.keys}`"
+        :result="result"
+      />
+      <p v-if="partialMatches.length">
+        {{ partialMatches.length }} similar result{{
+          partialMatches.length === 1 ? "" : "s"
+        }}
+      </p>
+      <Result
+        v-for="result of partialMatchesCutoff"
+        :key="`${result.id}-${result.keys}`"
+        :result="result"
+      />
       <button
+        class="search__show-more"
         v-if="partialMatches.length && cutoff < partialMatches.length"
         @click="showAll"
       >
-        Show More
+        Show More Results
       </button>
+      <ContributionCTA
+        >Don't see your shortcut? Learn how to contribute.</ContributionCTA
+      >
     </div>
   </div>
 </template>
@@ -67,29 +84,37 @@ const showAll = () => {
 
   &__results {
     @include list(1.75rem);
+    &__empty {
+      color: rgba(255, 255, 255, 0.33);
+      display: flex;
+      justify-content: center;
+    }
 
     p {
-      @include p(Inter);
+      @include p;
+      font-size: 1.25rem;
       padding: 2.0625rem 1.5rem 1.125rem;
-      color: #a3c6e6;
+      line-height: 100%;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.4);
     }
   }
 
   &__show-more {
-    margin: 2rem auto 0;
-    max-width: 21.25rem;
+    outline: none;
+    padding: 0.625rem;
+    margin: 3rem auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    button {
-      background: none;
-      border: none;
-      color: $blueGrey400;
-      padding: 1rem 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.33);
 
-      &:hover {
-        color: $white;
-      }
+    &:hover {
+      color: $white;
+      border: 1px solid rgba(255, 255, 255, 0.4);
     }
   }
 }

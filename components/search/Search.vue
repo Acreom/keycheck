@@ -1,69 +1,85 @@
 <template>
-  <div class="search">
+  <div class="search" :class="{ focused }">
+    <SearchIcon class="search-icon" />
     <input
-        v-model="query"
-        placeholder="Search by keybind, app, or description"
-        @input="onInput"
-        @keydown.enter="onEnter"
+      v-model="query"
+      placeholder="Search by keybind, app, or description"
+      @input="onInput"
+      @focus="focused = true"
+      @blur="focused = false"
     />
-    <button @click="onEnter">↵</button>
+    <button class="search__clear" v-if="query" @click="onClear">
+      <CloseIcon class="close-icon" />
+    </button>
   </div>
 </template>
 <script setup lang="ts">
-const query = ref<string>('');
+import SearchIcon from "@/assets/icons/SearchIcon.svg?component";
+import CloseIcon from "@/assets/icons/CloseIcon.svg?component";
+import debounce from "lodash/debounce";
 
-const { $search } = useNuxtApp();
-const emit = defineEmits(['search']);
+const query = ref<string>("");
+const focused = ref<boolean>(false);
+const emit = defineEmits(["search"]);
 
-const onInput = (inputEvent: InputEvent) => {
-  const target = inputEvent.target as HTMLInputElement;
-  query.value = target.value;
-  if (query.value.length === 0) {
-    emit('search', '');
-  }
-}
+const onInput = debounce(() => {
+  emit("search", query.value);
+}, 500);
 
-const onEnter = () => {
-  console.log('onEnter', query.value);
-  emit('search', query.value);
-}
+const onClear = () => {
+  query.value = "";
+  emit("search", query.value);
+};
 </script>
 <style lang="scss" scoped>
 .search {
-  @include sizer(1.5rem);
+  @include sizer(4rem);
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 1.25rem;
+  border-radius: 36px;
+  background: rgba(0, 0, 0, 0.2);
+  background-blend-mode: color-burn, luminosity;
+  box-shadow:
+    0px 1.5px 4px 0px rgba(0, 0, 0, 0.1) inset,
+    0px 1.5px 4px 0px rgba(0, 0, 0, 0.08) inset,
+    0px -0.5px 1px 0px rgba(255, 255, 255, 0.25) inset,
+    0px -0.5px 1px 0px rgba(255, 255, 255, 0.3) inset;
+  padding: 0 1.6875rem;
 
-  input {
-    padding: 0.5rem 1rem;
-    border-radius: 24px;
-    outline: none;
-    min-width: 21rem;
+  &.focused {
+    background: rgba(0, 0, 0, 0.25);
   }
 
-  button {
-    background: $orange;
-    padding: 0.5rem 0.75rem;
-    border-radius: 24px;
-    color: white;
+  &__clear {
     outline: none;
-    transition: all 0.1s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     &:hover {
-      -webkit-box-shadow: 0.15rem 0.15rem 0px 0.1rem rgba(1,1,1,0.3);
-      -moz-box-shadow: 0.15rem 0.15rem 0px 0.1rem rgba(1,1,1,0.3);
-      box-shadow: 0.15rem 0.15rem 0px 0.1rem rgba(1,1,1,0.3);
+      .close-icon {
+        color: #fff;
+      }
     }
+    .close-icon {
+      color: #d9d9d9;
+      flex-shrink: 0;
+    }
+  }
+  .search-icon {
+    color: $white;
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
 
-    &:active {
-      transform: translate(0.1rem, 0.1rem);
-      -webkit-box-shadow: 0.05rem 0.05rem 0px 0.07rem rgba(1,1,1,0.3);
-      -moz-box-shadow: 0.05rem 0.05rem 0px 0.07rem rgba(1,1,1,0.3);
-      box-shadow: 0.05rem 0.05rem 0px 0.1rem rgba(1,1,1,0.3);
+  input {
+    @include p(Inter);
+    outline: none;
+    width: 100%;
+    color: $white;
+    background: none;
+    padding: 1.1875rem 0;
+
+    &::placeholder {
+      color: $white;
+      opacity: 0.7; /* Firefox */
     }
   }
 }

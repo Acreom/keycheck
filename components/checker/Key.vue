@@ -1,48 +1,51 @@
 <template>
   <button
-      class="key"
-      :class="{
-        empty: !capturedKey,
-        'has-focus': focused
-      }"
-      @click="onFocus"
+    class="key"
+    :class="{
+      empty: !capturedKey,
+      'has-focus': focused,
+    }"
+    @click="onFocus"
   >
-    {{ capturedKey || 'Enter a key' }}
+    {{ capturedKey || "Press a key" }}
   </button>
 </template>
 <script setup lang="ts">
 const props = defineProps({
-  capturedKey: String,
+  capturedKey: {
+    type: String,
+    required: false,
+  },
   keyIndex: Number,
   focused: Boolean,
 });
 
-const emit = defineEmits(['focus', 'inputKey']);
+const emit = defineEmits(["focus", "inputKey"]);
 
 const onKeyDown = (event: KeyboardEvent) => {
-  emit('inputKey', event, props.keyIndex);
-}
+  emit("inputKey", event, props.keyIndex);
+};
 
 const isFocused = computed(() => {
   return props.focused;
 });
 
 watch(
-    isFocused,
-    (val, _prevVal) => {
-      if (typeof window == 'undefined') return;
-      if (val) {
-        window.addEventListener('keydown', onKeyDown);
-      } else {
-        window.removeEventListener('keydown', onKeyDown);
-      }
-    },
-    { immediate: true }
+  isFocused,
+  (val, _prevVal) => {
+    if (typeof window == "undefined") return;
+    if (val) {
+      window.addEventListener("keydown", onKeyDown);
+    } else {
+      window.removeEventListener("keydown", onKeyDown);
+    }
+  },
+  { immediate: true },
 );
 
 const onFocus = () => {
-  emit('focus', props.keyIndex);
-}
+  emit("focus", props.keyIndex);
+};
 </script>
 <style lang="scss" scoped>
 .key {
@@ -51,7 +54,7 @@ const onFocus = () => {
   position: relative;
   cursor: default;
   border-radius: 1.5rem;
-  background-image: url("/image_1266.png");
+  background-image: image-set("/key.png" 1x, "/key@2x.png" 2x);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -67,7 +70,7 @@ const onFocus = () => {
   padding: 0 0 1.5rem 0;
 
   &.has-focus {
-    outline: 4px solid #A3C6E7;
+    outline: 4px solid #83d2ff;
   }
 
   &.empty {

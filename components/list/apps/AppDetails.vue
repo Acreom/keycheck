@@ -1,17 +1,21 @@
 <template>
   <div class="app-details">
-    <nuxt-link :to="`/apps/${app.id}`" class="app-details__wrapper">
-      <img :src="app.icon" :alt="`${app.name} logo`" class="app-details__logo" />
-      <div class="app-details__homepage">{{app.name}}</div>
-      <ArrowRight class="icon" />
+    <nuxt-link :to="`/apps/${app.id}/`" class="app-details__wrapper">
+      <img
+        :src="app.icon"
+        :alt="`${app.name} logo`"
+        class="app-details__logo"
+      />
+      <div class="app-details__homepage">{{ app.name }}</div>
+      <ArrowBack class="icon" />
     </nuxt-link>
   </div>
 </template>
 <script lang="ts" setup>
-import ArrowRight from "@/assets/icons/ArrowRight.svg?component";
+import ArrowBack from "@/assets/icons/ArrowBack.svg?component";
 const props = defineProps({
   app: { type: Object, required: true },
-})
+});
 const app = computed(() => props.app);
 </script>
 <style lang="scss" scoped>
@@ -20,14 +24,14 @@ const app = computed(() => props.app);
 
   &__wrapper {
     @include listItemWrapper;
-    grid-template-columns: 1.75rem 1fr 1.75rem;
+    grid-template-columns: 1.75rem 1fr 3.125rem;
   }
 
   &__logo {
     height: 1.5rem;
   }
 
-  &__homepage{
+  &__homepage {
     font-size: 1.125rem;
     font-style: normal;
     font-weight: 600;
@@ -37,7 +41,8 @@ const app = computed(() => props.app);
   }
 
   .icon {
-    color: #D9D9D9;
+    transform: scale(-0.8);
+    color: rgba(217, 217, 217, 0.5);
   }
 
   &:hover {

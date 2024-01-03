@@ -1,63 +1,95 @@
 <template>
-  <h1>All Shortcuts</h1>
-  <Search @search="onSearch"/>
-  <ShortcutsList :shortcuts="filteredShortcuts" :group-by-shortcut="true" />
+  <Search @search="onSearch" />
+  <ShortcutsList
+    v-if="filteredResults.length || query.length"
+    :shortcuts="filteredResults"
+  />
+  <AppAbout v-else />
 </template>
 <script setup lang="ts">
 import ShortcutsList from "~/components/list/shortcuts/ShortcutsList.vue";
-import {WEBSITE} from "~/helpers/constants";
-import {App} from "~/helpers/AppBase";
+import { WEBSITE } from "~/helpers/constants";
+import { preprocess } from "~/helpers/shortcuts";
 
 const { $apps, $search } = useNuxtApp();
 
-const filterKeybinds = ref<string[]>([]);
-const allShortcuts = computed(() => $apps.$getApps().reduce((acc: Record<string, string>, app: App) => ({...acc, ...app.shortcuts, ...app.globals}), {} as Record<string, string>));
+const searchResults = ref<any[]>([]);
+const allShortcuts = computed(() => $apps.$getAllShortcuts());
+const numResults = computed(() => Object.keys(filteredResults.value).length);
+const query = ref<string>("");
 
-const filteredShortcuts = computed(() => {
-  if (filterKeybinds.value.length === 0) {
-    return allShortcuts.value;
-  }
-  const filtered = Object.keys(allShortcuts.value).reduce((acc, keybind) => {
-    if (filterKeybinds.value.includes(keybind)) {
-      return {...acc, [keybind]: allShortcuts.value[keybind]}
+const shortcutsUsages = computed(() => {
+  const shortcutsMap = Object.keys(allShortcuts.value).reduce(
+    (acc, key) => {
+      acc[preprocess(key)] = [];
+      return acc;
+    },
+    {} as Record<string, string[]>,
+  );
+  const { $apps } = useNuxtApp();
+  for (const app of $apps.$getApps()) {
+    const appShortcuts = {
+      ...app.shortcuts,
+      ...app.globals,
+    };
+    for (const key of Object.keys(appShortcuts)) {
+      if (preprocess(key) in shortcutsMap) {
+        shortcutsMap[preprocess(key)].push(app.id);
+      }
     }
-    return acc;
-  }, {} as Record<string, string>);
-  return filtered;
-})
+  }
+  return shortcutsMap;
+});
 
-const onSearch = (query: string) => {
-  const results = $search.$search(query.toLowerCase());
-  filterKeybinds.value = Array.from(new Set(results.map((result: any) => result.keybind.split(' ').join('+'))));
-}
+const allShortcutsRemapped = computed(() => {
+  return Object.keys(allShortcuts.value).map((key, index) => {
+    const keys = preprocess(key);
+    const shortcutUsages = shortcutsUsages.value[keys].length;
+    const description = `${shortcutUsages} app${
+      shortcutUsages > 1 || shortcutUsages <= 0 ? "s" : ""
+    }`;
+    return {
+      id: `${keys}-${description}-${index}`,
+      keys,
+      description,
+      redirect: `/shortcuts/${encodeURIComponent(key.toLowerCase())}/`,
+    };
+  });
+});
 
-const description = computed(() => `Browse ${Object.keys(allShortcuts.value).length} Shortcuts. Check for Conflicts When Designing Your Own Shortcuts.`);
-const title = computed(() => `Browse ${Object.keys(allShortcuts.value).length} Shortcuts | ${WEBSITE}`);
-const ogImageOptions = {
-  title: title.value.split(' | ')[0],
-  description: description.value
-}
+const filteredResults = computed(() => {
+  if (query.value.length === 0) {
+    return [];
+  }
+  if (searchResults.value.length === 0) {
+    return [];
+  }
+  return searchResults.value;
+});
 
-defineOgImage(ogImageOptions)
+const onSearch = (newQuery: string) => {
+  query.value = newQuery.toLowerCase();
+  searchResults.value = $search.$search(query.value);
+};
+
+const description = computed(
+  () =>
+    `Browse ${$apps.$allShortcutsCount()} Shortcuts. Check for Conflicts When Designing Your Own Shortcuts.`,
+);
+
+const title = computed(
+  () =>
+    `${query.value !== "" ? "Found" : "Search"} ${
+      query.value !== "" ? numResults.value : "All"
+    } Shortcuts | ${WEBSITE}`,
+);
+
 useSeoMeta({
   description,
   title,
   ogTitle: title,
   ogDescription: description,
-  twitterCard: 'summary_large_image',
-})
+  twitterCard: "summary_large_image",
+});
 </script>
-<style lang="scss" scoped>
-h1 {
-  @include sizer;
-  @include h1;
-}
-
-.switcher-wrapper {
-  @include sizer(2rem);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-</style>
+<style lang="scss" scoped></style>

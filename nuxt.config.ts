@@ -19,20 +19,23 @@ export default defineNuxtConfig({
   modules: [
     ["@nuxtjs/google-fonts", fonts],
     "@nuxt/image",
-    "nuxt-og-image",
     "nuxt-simple-robots",
     "nuxt-simple-sitemap",
+    "@nuxtjs/plausible",
   ],
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
           additionalData:
-            '@import "@/assets/scss/colors.scss"; @import "@/assets/scss/mixins.scss"; @import "@/assets/scss/fonts.scss";',
+            '@import "@/assets/scss/colors.scss"; @import "@/assets/scss/mixins.scss"; @import "@/assets/scss/variables.scss";',
         },
       },
     },
     plugins: [svgLoader({})],
+  },
+  imports: {
+    dirs: ["types/*.ts"],
   },
   sitemap: {
     urls: async () => {
@@ -40,9 +43,14 @@ export default defineNuxtConfig({
       const shortcutRoutes = await buildShortcutRoutes();
       return [...appRoutes, ...shortcutRoutes];
     },
+    autoLastmod: true,
+    trailingSlash: true,
   },
   site: {
     url: "https://keycheck.dev",
+  },
+  plausible: {
+    domain: "keycheck.dev",
   },
   robots: {
     disallow: [],

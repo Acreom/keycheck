@@ -1,13 +1,4 @@
-@mixin title {
-  font-family: 'NEOPIXEL';
-  color: $white;
-  text-align: center;
-  font-size: 5.375rem;
-  font-style: normal;
-  line-height: 6.13825rem;
-}
-
-@mixin h1($font-family: 'NEOPIXEL') {
+@mixin h1($font-family: system-ui) {
   font-family: $font-family;
   color: $white;
   text-align: center;
@@ -64,7 +55,7 @@
   display: grid;
   align-items: center;
   gap: 0.5rem;
-  padding: 1.9375rem 1.6875rem;
+  padding: 1.453rem 1.27rem;
 
   &:hover {
     border-radius: 1.25rem;

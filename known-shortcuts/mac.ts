@@ -25,7 +25,8 @@ const app = {
       "open the selected item, or open a dialog to select a file to open",
     "cmd+p": "print the current document",
     "cmd+s": "save the current document",
-    "cmd+t": "open a new tab",
+    "cmd+t":
+      "open a new tab / show or hide the tab bar when a single tab is open in the current finder window / show or hide the fonts window",
     "cmd+w": "close the front window",
     "alt+cmd+w": "close all windows of the app",
     "alt+cmd+esc": "force quit an app",
@@ -35,16 +36,19 @@ const app = {
     "ctrl+cmd+f": "use the app in full screen, if supported by the app",
     space: "use quick look to preview the selected item",
     "cmd+tab": "switch to the next most recently used app among your open apps",
-    "cmd+`": "switch between the windows of the app you're using",
+    "cmd+`":
+      "switch between the windows of the app you're using / activate the next open window in the front app",
     "shift+cmd+5": "take a screenshot or make a screen recording",
     "shift+cmd+n": "create a new folder in the finder",
     "cmd+,": "open preferences for the front app",
     "ctrl+cmd+q": "immediately lock your screen",
     "shift+cmd+q": "log out of your macos user account",
     "alt+shift+cmd+q": "log out immediately without confirming",
-    "cmd+d": "duplicate the selected files",
+    "cmd+d":
+      "duplicate the selected files / select the desktop folder from within an open dialog or save dialog",
     "cmd+e": "eject the selected disk or volume",
-    "cmd+i": "show the get info window for a selected file",
+    "cmd+i":
+      "show the get info window for a selected file / italicize the selected text, or turn italics on or off",
     "cmd+r":
       "show the original file for the selected alias in the finder, refresh or reload the page in some apps, or check for software updates again in software update",
     "shift+cmd+c": "open the computer window",
@@ -57,7 +61,8 @@ const app = {
     "shift+cmd+k": "open the network window",
     "alt+cmd+l": "open the downloads folder",
     "shift+cmd+o": "open the documents folder",
-    "shift+cmd+p": "show or hide the preview pane in finder windows",
+    "shift+cmd+p":
+      "show or hide the preview pane in finder windows / page setup: display a window for selecting document settings",
     "shift+cmd+r": "open the airdrop window",
     "shift+cmd+t": "show or hide the tab bar in finder windows",
     "ctrl+shift+cmd+t":
@@ -74,12 +79,10 @@ const app = {
     "ctrl+cmd+a": "make an alias of the selected item",
     "cmd+n": "open a new finder window",
     "alt+cmd+n": "create a new smart folder",
-    "cmd+t":
-      "show or hide the tab bar when a single tab is open in the current finder window",
     "alt+cmd+t":
-      "show or hide the toolbar when a single tab is open in the current finder window",
+      "show or hide the toolbar when a single tab is open in the current finder window / show or hide a toolbar in the app",
     "alt+cmd+v":
-      "move the files in the clipboard from their original location to the current location",
+      "move the files in the clipboard from their original location to the current location / paste style: apply the copied style to the selected item",
     "cmd+y": "use quick look to preview the selected files",
     "alt+cmd+y": "view a quick look slideshow of the selected files",
     "cmd+1": "view the items in the finder window as icons",
@@ -88,10 +91,12 @@ const app = {
     "cmd+4": "view the items in a finder window in a gallery",
     "cmd+[": "go to the previous folder",
     "cmd+]": "go to the next folder",
-    "cmd+up": "open the folder that contains the current folder",
+    "cmd+up":
+      "open the folder that contains the current folder / move the insertion point to the beginning of the document",
     "cmd+ctrl+up":
       "open the folder that contains the current folder in a new window",
-    "cmd+down": "open the selected item",
+    "cmd+down":
+      "open the selected item / move the insertion point to the end of the document",
     right: "open the selected folder (list view only)",
     left: "close the selected folder (list view only)",
     "cmd+delete": "move the selected item to the trash",
@@ -99,15 +104,10 @@ const app = {
     "alt+shift+cmd+delete": "empty the trash without confirmation dialog",
     "ctrl+down": "show all windows of the front app",
     "cmd+b": "boldface the selected text, or turn boldfacing on or off",
-    "cmd+i": "italicize the selected text, or turn italics on or off",
     "cmd+u": "underline the selected text, or turn underlining on or off",
-    "cmd+t": "show or hide the fonts window",
-    "cmd+d":
-      "select the desktop folder from within an open dialog or save dialog",
     "ctrl+cmd+d": "show or hide the definition of the selected word",
     "shift+cmd+:": "display the spelling and grammar window",
     "cmd+;": "find misspelled words in the document",
-    "alt+delete": "delete the word to the left of the insertion point",
     "alt+delete": "delete the word to the left of the insertion point",
     "ctrl+h": "delete the character to the left of the insertion point",
     "ctrl+d": "delete the character to the right of the insertion point",
@@ -119,8 +119,6 @@ const app = {
     "fn+down": "page down: scroll down one page",
     "fn+left": "home: scroll to the beginning of a document",
     "fn+right": "end: scroll to the end of a document",
-    "cmd+up": "move the insertion point to the beginning of the document",
-    "cmd+down": "move the insertion point to the end of the document",
     "cmd+left": "move the insertion point to the beginning of the current line",
     "cmd+right": "move the insertion point to the end of the current line",
     "alt+left":
@@ -162,19 +160,15 @@ const app = {
     "cmd+}": "right align",
     "shift+cmd+|": "center align",
     "alt+cmd+f": "go to the search field",
-    "alt+cmd+t": "show or hide a toolbar in the app",
     "alt+cmd+c":
       "copy style: copy the formatting settings of the selected item to the clipboard",
-    "alt+cmd+v": "paste style: apply the copied style to the selected item",
     "alt+shift+cmd+v":
       "paste and match style: apply the style of the surrounding content to the item pasted within that content",
     "alt+cmd+i": "show or hide the inspector window",
-    "shift+cmd+p":
-      "page setup: display a window for selecting document settings",
     "shift+cmd+s":
       "display the save as dialog, or duplicate the current document",
-    "shift+cmd+-": "decrease the size of the selected item",
-    "shift+cmd++": "increase the size of the selected item",
+    "shift+cmd+minus": "decrease the size of the selected item",
+    "shift+cmd+plus": "increase the size of the selected item",
     "shift+cmd+?": "open the help menu",
     "ctrl+alt+cmd+8": "invert colors",
     "ctrl+alt+cmd+,": "reduce contrast",
@@ -196,7 +190,6 @@ const app = {
       "change the way tab moves focus—between navigation of all controls on the screen, or only text boxes and lists",
     "ctrl+f8": "move focus to the status menu in the menu bar",
     "fn+ctrl+f8": "move focus to the status menu in the menu bar",
-    "cmd+`": "activate the next open window in the front app",
     "shift+cmd+`": "activate the previous open window in the front app",
     "alt+cmd+`": "move the focus to the window drawer",
     tab: "move to next control",

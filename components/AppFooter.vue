@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="links">
-      <nuxt-link to="/about">About</nuxt-link>
+      <nuxt-link to="/about/"><span>About</span></nuxt-link>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@
 
   a {
     text-align: center;
-    font-family: Inter;
+    font-family: system-ui;
     font-size: 0.825rem;
     font-style: normal;
     font-weight: 400;
@@ -29,9 +29,23 @@
     text-decoration: none;
     color: $linkInactive;
 
+    &:after {
+      content: "↗";
+      margin-left: 0.25rem;
+      opacity: 0;
+      transition: opacity 0.2s cubic-bezier(0.04, 0.76, 1, 0.81);
+    }
+
     &:hover {
+      &:after {
+        opacity: 1;
+      }
+      span {
+        text-decoration: underline;
+      }
       color: $linkActive;
     }
   }
 }
 </style>
+<script setup lang="ts"></script>

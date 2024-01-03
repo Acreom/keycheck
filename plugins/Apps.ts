@@ -21,6 +21,15 @@ function getShortcutsMatches(
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   const apps = ref<App[]>(await loadApps());
+  const getShortcuts = () =>
+    apps.value.reduce(
+      (acc: Record<string, string>, val) => ({
+        ...acc,
+        ...val.shortcuts,
+        ...val.globals,
+      }),
+      {},
+    );
   nuxtApp.provide("apps", {
     $getApps: () => apps.value,
     $getShortcutsMatches: (input: string, platform: "win" | "mac") => {
@@ -28,13 +37,25 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     },
     $getMatchesCount: (appId: string) => {
       const app = apps.value.find((app) => app.id === appId);
-      const platform = useState("platform", (): "mac" | "win" => "mac");
       if (!app) return [];
+      const matchShortcut = (shortcut: string) => {
+        for (const app of apps.value) {
+          if (app.id === appId) continue;
+          if (app.shortcuts[shortcut]) return true;
+        }
+      };
       return Object.keys(app.shortcuts).reduce((acc: number, val: string) => {
-        return (
-          acc + getShortcutsMatches(val, apps.value, platform.value).length
-        );
+        return acc + (matchShortcut(val) ? 1 : 0);
       }, 0);
+    },
+    $getAllShortcuts: () => {
+      return getShortcuts();
+    },
+    $appsCount: () => {
+      return apps.value.length;
+    },
+    $allShortcutsCount: () => {
+      return Object.keys(getShortcuts()).length;
     },
   });
 });

@@ -19,29 +19,25 @@
 import {
   transformKeys,
   platformPreprocessCapturedKeys,
-  platformPreprocess,
   routeToCapturedKeys,
+  preprocess,
 } from "~/helpers/shortcuts";
 import Key from "~/components/checker/Key.vue";
 
 const route = useRoute();
 const router = useRouter();
 
-const platform = useState("platform", (): "mac" | "win" => "mac");
-const capturedRaw = ref<string[]>([]);
 const capturedKeys = computed(() => {
-  return platformPreprocessCapturedKeys(capturedRaw.value);
+  if (!route.params?.keybind) return [];
+  const raw = preprocess(
+    routeToCapturedKeys(route.params.keybind as string),
+  ).split("+");
+  return platformPreprocessCapturedKeys(raw);
 });
 
-// @ts-ignore
-onMounted(() => {
-  if (route.params?.keybind) {
-    capturedRaw.value = platformPreprocess(
-      routeToCapturedKeys(route.params.keybind as string),
-      platform.value,
-    ).split("+");
-    router.replace({ params: {} });
-  }
+onBeforeMount(() => {
+  console.log("static checker", capturedKeys.value);
+  router.replace({ params: {} });
 });
 </script>
 <style lang="scss" scoped>

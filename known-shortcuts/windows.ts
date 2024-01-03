@@ -52,7 +52,6 @@ const app = {
     "win+.": "Open emoji panel",
     "win+;": "Open emoji panel",
     "win+,": "Temporarily peek at the desktop",
-    "win+Pause": "Opens Start  > Settings  > System  > About ",
     "win+Ctrl+F": "Search for PCs (if you're on a network)",
     "win+Up": "Maximize the window",
     "win+Alt+Up":
@@ -83,9 +82,6 @@ const app = {
     "win+Esc": "Close Magnifier",
     "win+/": "Begin IME reconversion",
     "win+Ctrl+Shift+B": "Wake PC from blank or black screen",
-    "win+PrtScn": "Save full screen screenshot to file",
-    "win+Alt+PrtScn":
-      "Save screenshot of game window in focus to file (using Xbox Game Bar)",
     "win+Alt+Enter": "Open taskbar settings",
   },
   shortcuts: {
@@ -110,8 +106,8 @@ const app = {
     "Alt+Space": "Open the shortcut menu for the active window",
     "Alt+Left": "Go back",
     "Alt+Right": "Go forward",
-    "Alt+PageUp": "Move up one screen",
-    "Alt+PageDown": "Move down one screen",
+    "Alt+pgup": "Move up one screen",
+    "Alt+pgdn": "Move down one screen",
     "Ctrl+F4":
       "Close the active document (in apps that are full-screen and let you have multiple documents open at the same time)",
     "Ctrl+A": "Select all items in a document or window",
@@ -135,8 +131,6 @@ const app = {
     Right: "Open the next menu to the right, or open a submenu",
     Left: "Open the next menu to the left, or close a submenu",
     Esc: "Stop or leave the current task",
-    PrtScn:
-      "Take a screenshot of your whole screen and copy it to the clipboard",
   },
 };
 

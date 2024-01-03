@@ -1,11 +1,5 @@
 <template>
   <div class="app-detail">
-    <div class="app-detail__back">
-      <nuxt-link to="/apps" class="app-detail__back__wrapper">
-        <ArrowBack class="icon" />
-        <span>BACK</span>
-      </nuxt-link>
-    </div>
     <div class="app-detail__stats">
       <AboutApp />
     </div>
@@ -13,42 +7,61 @@
   </div>
 </template>
 <script setup lang="ts">
-import ArrowBack from "@/assets/icons/ArrowBack.svg?component";
 import AboutApp from "~/components/app/AboutApp.vue";
 import ShortcutsList from "~/components/list/shortcuts/ShortcutsList.vue";
-import {WEBSITE} from "~/helpers/constants";
+import { WEBSITE } from "~/helpers/constants";
+import { preprocess } from "~/helpers/shortcuts";
+import { AppParams } from "~/types";
 
 const route = useRoute();
 const { $apps } = useNuxtApp();
 
-const currentApp = computed(() => $apps.$getApps().find(app => app.id === id));
-const shortcuts = computed(() => ({...currentApp.value.shortcuts, ...currentApp.value.globals}));
+const currentApp = computed(() =>
+  $apps.$getApps().find((app: AppParams) => app.id === id),
+);
+const shortcuts = computed(() => {
+  const allShortcuts = [
+    ...Object.keys(currentApp.value.shortcuts),
+    ...Object.keys(currentApp.value.globals),
+  ];
+  return allShortcuts.map((shortcut) => ({
+    keys: preprocess(shortcut),
+    description:
+      currentApp.value.shortcuts[shortcut] ??
+      currentApp.value.globals[shortcut],
+    redirect: `/shortcuts/${encodeURIComponent(shortcut.toLowerCase())}/`,
+  }));
+});
 
 const id = route.params.id;
 
-if (!$apps.$getApps().find(app => app.id === id)) {
-  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' });
+if (!$apps.$getApps().find((app: AppParams) => app.id === id)) {
+  throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
 }
 
-const description = computed(() => `Browse ${Object.keys(shortcuts.value).length} Shortcuts of ${currentApp.value.name}. Check for Conflicts When Designing Your Own Shortcuts.`);
-const title = computed(() => `${currentApp.value.name} - Browse ${Object.keys(shortcuts.value).length} Shortcuts | ${WEBSITE}`);
-const ogImageOptions = {
-  title: title.value.split(' | ')[0],
-  description: description.value,
-}
-
-defineOgImage(ogImageOptions)
+const description = computed(
+  () =>
+    `Browse ${Object.keys(shortcuts.value).length} Shortcuts of ${
+      currentApp.value.name
+    }. Check for Conflicts When Designing Your Own Shortcuts.`,
+);
+const title = computed(
+  () =>
+    `${currentApp.value.name} - Browse ${
+      Object.keys(shortcuts.value).length
+    } Shortcuts | ${WEBSITE}`,
+);
 useSeoMeta({
   description,
   title,
   ogTitle: title,
   ogDescription: description,
-  twitterCard: 'summary_large_image',
-})
+  twitterCard: "summary_large_image",
+});
 </script>
 <style lang="scss" scoped>
 .app-detail {
-  @include sizer;
+  @include sizer(4rem);
 
   &__back {
     width: 100%;
@@ -86,6 +99,10 @@ useSeoMeta({
 
   &__shortcuts {
     @include list(1.3125rem);
+  }
+
+  :deep(.shortcuts-list) {
+    margin-top: 2rem;
   }
 }
 </style>

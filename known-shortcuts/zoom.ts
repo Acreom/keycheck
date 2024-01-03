@@ -57,7 +57,6 @@ const app = {
     "alt+h": "display or hide in-meeting chat panel",
     "alt+u": "display or hide participants panel",
     "alt+i": "open invite window",
-    "alt+y": "raise or lower hand",
     "alt+shift+r": "gain remote control",
     "alt+shift+g": "stop remote control",
     "ctrl+2": "read active speaker name",

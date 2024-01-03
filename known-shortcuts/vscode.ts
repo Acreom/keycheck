@@ -109,7 +109,7 @@ const app = {
     f11: "step into / toggle full screen",
     "shift+alt+0": "toggle editor layout (horizontal/vertical)",
     "cmdorctrl+=": "zoom in",
-    "cmdorctrl+-": "zoom out",
+    "cmdorctrl+plus": "zoom out",
     "cmdorctrl+b": "toggle sidebar visibility",
     "cmdorctrl+shift+e": "show explorer/toggle focus",
     "cmdorctrl+shift+f": "show search",

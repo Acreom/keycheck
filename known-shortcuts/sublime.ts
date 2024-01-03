@@ -46,7 +46,7 @@ const app = {
     "Shift+cmdOrCtrl+2": "move files to group 2",
     "cmdOrCtrl+2": "jump to group 2",
     "cmdOrCtrl+Backspace": "delete the word in the backward direction",
-    "cmdOrCtrl+Del": "delete the word in the forwarding direction",
+    "cmdOrCtrl+Delete": "delete the word in the forwarding direction",
     "Shift+cmdOrCtrl+K": "delete the entire line",
     "Shift+cmdOrCtrl+[": "fold the code",
     "Shift+cmdOrCtrl+]": "unfold the code",

@@ -13,7 +13,6 @@ const keysMap: Record<string, string> = {
   tab: "↹",
   escape: "⎋",
   esc: "⎋",
-  powerButton: "⏻",
   plus: "+",
   minus: "-",
   win: "⊞",
@@ -24,6 +23,34 @@ const keysMap: Record<string, string> = {
   pagedown: "⇟",
 };
 
+const tooltips: Record<string, string> = {
+  "⇧": "Shift",
+  "^": "Ctrl",
+  "⎇": "Alt",
+  "␣": "Space",
+  "↑": "Arrow Up",
+  "↓": "Arrow Down",
+  "←": "Arrow Left",
+  "→": "Arrow Right",
+  "↵": "Enter",
+  "⌫": "Backspace",
+  "↹": "Tab",
+  "⎋": "Escape",
+  "+": "Plus",
+  "-": "Minus",
+  "⊞": "Windows",
+  "␡": "Delete",
+  "↖": "Home",
+  "↘": "End",
+  "⇞": "Page Up",
+  "⇟": "Page Down",
+  "⌘": "Command",
+  FN: "Function",
+};
+
+function getTooltip(key: string) {
+  return tooltips[key];
+}
 function transformKeys(keys: string[]) {
   return keys.map((key: string) => {
     key = key.toLowerCase();
@@ -59,6 +86,8 @@ const MAP: Record<number, string> = {
   46: "del",
   91: "meta",
   93: "meta",
+  171: "plus",
+  189: "minus",
   224: "meta",
 };
 
@@ -162,6 +191,13 @@ function routeToCapturedKeys(keys: string) {
     .join("+");
 }
 
+function preprocess(key: string) {
+  return platformPreprocess(
+    key,
+    useState("platform", (): "mac" | "win" => "mac").value,
+  );
+}
+
 function platformPreprocess(shortcut: string, platform: "mac" | "win") {
   const generalPreprocessed = normalizeModifierKeys(shortcut.toLowerCase())
     .replace(/(return)/g, "enter")
@@ -176,7 +212,6 @@ function platformPreprocess(shortcut: string, platform: "mac" | "win") {
   return generalPreprocessed
     .replace(/(cmdorctrl)/g, "meta")
     .replace(/(cmd)/g, "meta");
-  // .replace(/(cmd)/g, "meta");
 }
 
 export {
@@ -185,4 +220,6 @@ export {
   platformPreprocess,
   platformPreprocessCapturedKeys,
   routeToCapturedKeys,
+  getTooltip,
+  preprocess,
 };

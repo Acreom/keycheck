@@ -13,9 +13,9 @@ const app = {
     "cmdorctrl+t": "opens the fuzzy finder palette for file search",
     "cmdorctrl+b": "browses tabs within the window",
     "alt+cmd+left": "cycles left through open tabs (in the active pane)",
-    "ctrl+pageup": "cycles left through open tabs (in the active pane)",
+    "ctrl+pgup": "cycles left through open tabs (in the active pane)",
     "alt+cmd+right": "cycles right through open tabs (in the active pane)",
-    "ctrl+pagedown": "cycles right through open tabs (in the active pane)",
+    "ctrl+pgdn": "cycles right through open tabs (in the active pane)",
     "cmdorctrl+shift+l": "selects the language the file is in",
     "cmdorctrl+shift+m": "previews the file in the markdown format",
     "cmdorctrl+.":

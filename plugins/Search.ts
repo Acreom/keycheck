@@ -1,8 +1,13 @@
 import MiniSearch from "minisearch";
+import { platformPreprocess, preprocess } from "~/helpers/shortcuts";
 export default defineNuxtPlugin((nuxtApp) => {
   const miniSearch = new MiniSearch({
-    fields: ["description", "keybind", "app"],
-    storeFields: ["app", "description", "keybind"],
+    fields: ["description", "keybind", "appName"],
+    storeFields: ["app", "description", "keybind", "global"],
+    searchOptions: {
+      fuzzy: 0.2,
+      prefix: true,
+    },
   });
   nuxtApp.provide("search", {
     $index: () => {
@@ -11,9 +16,15 @@ export default defineNuxtPlugin((nuxtApp) => {
         const appShortcuts = { ...app.shortcuts, ...app.globals };
         const shortcuts = Object.keys(appShortcuts).map((keybind) => ({
           id: `${app.id}-${keybind.toLowerCase()}`,
-          app: app.name,
+          app: {
+            id: app.id,
+            icon: app.icon,
+            name: app.name,
+          },
+          appName: app.name,
           description: appShortcuts[keybind],
           keybind: keybind.toLowerCase().replaceAll("+", " "),
+          global: Object.keys(app.globals).includes(keybind),
         }));
         acc.push(...shortcuts);
         return acc;
@@ -21,7 +32,14 @@ export default defineNuxtPlugin((nuxtApp) => {
       miniSearch.addAll(shortcuts);
     },
     $search: (query: string) => {
-      return miniSearch.search(query);
+      return miniSearch.search(query).map((result) => ({
+        id: result.id,
+        app: result.app,
+        description: result.description,
+        keys: preprocess(result.keybind.replaceAll(" ", "+")),
+        redirect: `/apps/${result.app.id}/`,
+        global: result.global,
+      }));
     },
   });
 });
