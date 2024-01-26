@@ -82,7 +82,7 @@ const app = {
     f4: "edit/view source",
     f5: "copy",
     f6: "move",
-    "alt+del": "safe delete",
+    "alt+delete": "safe delete",
     "shift+f6": "rename",
     "cmdorctrl+alt+n": "inline variable",
     "cmdorctrl+alt+m": "extract method/variable/field/constant",

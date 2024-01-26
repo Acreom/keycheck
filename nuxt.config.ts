@@ -47,10 +47,10 @@ export default defineNuxtConfig({
     trailingSlash: true,
   },
   site: {
-    url: "https://keycheck.dev",
+    url: process.env.BASE_URL || "https://keycheck.dev",
   },
   plausible: {
-    domain: "keycheck.dev",
+    domain: process.env.DOMAIN || "keycheck.dev",
   },
   robots: {
     disallow: [],
@@ -67,6 +67,11 @@ export default defineNuxtConfig({
         (route) => route.loc,
       );
       nitroConfig.prerender!.routes!.push(...allRoutes);
+    },
+  },
+  runtimeConfig: {
+    public: {
+      url: process.env.BASE_URL || "https://keycheck.dev",
     },
   },
 });

@@ -10,7 +10,9 @@ const { $apps } = useNuxtApp();
 const count = computed(() => $apps.$appsCount());
 const description = computed(
   () =>
-    `Browse ${$apps.$allShortcutsCount} Shortcuts Across ${count.value} Apps for Developers. Check for Conflicts When Designing Your Own Shortcuts.`,
+    `Browse ${$apps.$allShortcutsCount()} Shortcuts Across ${
+      count.value
+    } Apps for Developers. Check for Conflicts When Designing Your Own Shortcuts.`,
 );
 const title = computed(
   () => `Check Shortcuts of ${count.value} Apps | ${WEBSITE}`,

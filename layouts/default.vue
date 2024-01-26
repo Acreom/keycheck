@@ -23,6 +23,11 @@ const getDeviceType = () => {
 };
 
 const { $search } = useNuxtApp();
+const runtimeConfig = useRuntimeConfig();
+
+useSeoMeta({
+  ogImage: `${runtimeConfig.public.url}/og.png`,
+});
 
 onMounted(() => {
   $search.$index();

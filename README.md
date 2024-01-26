@@ -1,6 +1,26 @@
 # Keycheck.dev
 
-Check the availability of shortcuts for your app and seamlessly match them with any of the supported applications.
+[Keycheck.dev](https://keycheck.dev) is a tool designed to help developers find and match shortcuts for their apps with those of other applications and tools.
+
+## Features
+
+Keycheck.dev offers **three** main features:
+
+### Check key combinations
+
+Enter a key combination on the main page to see if it matches any shortcuts from supported apps.
+
+### Browse shortcuts by app
+
+View a list of all supported apps and their shortcuts on the apps page.
+
+### Search Shortcuts
+
+You can search the shortcuts by name of the app, shortcut description, or the keys they use.
+
+### Future use cases
+
+We plan to add a feature to generate a PDF cheatsheet of shortcuts for any supported tool.
 
 ## Local Setup
 
@@ -37,3 +57,5 @@ Please check out the [contributing guide](CONTRIBUTING.md) for more details.
 
 ## License
 [MIT](LICENSE)
+
+[NEOPIXEL](https://www.behance.net/gallery/165413157/NEOPIXEL-(free-font)) - Thanks to the authors for letting us use the font. 

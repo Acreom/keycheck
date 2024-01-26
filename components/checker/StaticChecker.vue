@@ -36,7 +36,6 @@ const capturedKeys = computed(() => {
 });
 
 onBeforeMount(() => {
-  console.log("static checker", capturedKeys.value);
   router.replace({ params: {} });
 });
 </script>

@@ -14,7 +14,10 @@
         {{ result.app.name }}
         <GlobalShortcutIndicator v-if="result.global" />
       </div>
-      <div class="result__description">{{ result.description }}</div>
+      <div class="result__description">
+        {{ result.description
+        }}<GlobalShortcutIndicator v-if="result.global && !result.app" />
+      </div>
       <div class="result__keys">
         <SmallKey v-for="key in resultKeys" :key="key" :kb-key="key" />
       </div>
@@ -67,6 +70,11 @@ const resultKeys = computed(() => {
   &__description {
     font-size: 1.125rem;
     color: #b7babf;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
   }
 
   &__keys {

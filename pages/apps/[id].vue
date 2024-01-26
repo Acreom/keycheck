@@ -20,17 +20,18 @@ const currentApp = computed(() =>
   $apps.$getApps().find((app: AppParams) => app.id === id),
 );
 const shortcuts = computed(() => {
-  const allShortcuts = [
-    ...Object.keys(currentApp.value.shortcuts),
-    ...Object.keys(currentApp.value.globals),
-  ];
-  return allShortcuts.map((shortcut) => ({
+  const shortcuts = Object.keys(currentApp.value.shortcuts).map((shortcut) => ({
     keys: preprocess(shortcut),
-    description:
-      currentApp.value.shortcuts[shortcut] ??
-      currentApp.value.globals[shortcut],
+    description: currentApp.value.shortcuts[shortcut],
     redirect: `/shortcuts/${encodeURIComponent(shortcut.toLowerCase())}/`,
   }));
+  const globals = Object.keys(currentApp.value.globals).map((shortcut) => ({
+    keys: preprocess(shortcut),
+    description: currentApp.value.globals[shortcut],
+    redirect: `/shortcuts/${encodeURIComponent(shortcut.toLowerCase())}/`,
+    global: true,
+  }));
+  return [...globals, ...shortcuts];
 });
 
 const id = route.params.id;
@@ -62,33 +63,6 @@ useSeoMeta({
 <style lang="scss" scoped>
 .app-detail {
   @include sizer(4rem);
-
-  &__back {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-
-    &__wrapper {
-      @include font-system-ui;
-      min-width: 111.75px;
-      min-height: 43.5px;
-      background-image: url("/Union.svg");
-      background-repeat: no-repeat;
-      display: flex;
-      align-items: center;
-      gap: 0.90625rem;
-      color: #676667;
-      text-align: center;
-      font-size: 0.9273125rem;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 114.2%;
-
-      &:hover {
-        filter: brightness(1.2);
-      }
-    }
-  }
 
   &__platform {
     @include sizer(2rem);
