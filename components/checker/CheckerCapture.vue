@@ -128,6 +128,7 @@ const onInput = (event: KeyboardEvent, index: number) => {
 
   &:not(.empty) {
     max-width: 35rem;
+    margin: 4.13rem auto 0;
   }
 
   &__empty {

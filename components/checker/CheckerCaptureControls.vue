@@ -46,6 +46,8 @@ const keys = [
   "#",
   "@",
   "$",
+  ":",
+  "!",
 ];
 
 const getDisplayKey = (key: string) => {
