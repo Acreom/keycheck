@@ -2,7 +2,7 @@
   <nuxt-link :to="`${result.redirect}`" class="result">
     <div
       class="result__wrapper"
-      :class="{ 'result__wrapper--has-app': result.app }"
+      :class="{ 'result__wrapper--has-app': result.app, reverse: !result.app }"
     >
       <img
         v-if="result.app"
@@ -42,7 +42,7 @@ const resultKeys = computed(() => {
 
   &__wrapper {
     @include listItemWrapper;
-    grid-template-columns: 1fr minmax(1.75rem, 9.25rem);
+    grid-template-columns: minmax(1.75rem, 9.25rem) 1fr;
 
     &--has-app {
       grid-template-columns: 1.75rem 0.5fr 1fr minmax(1.75rem, 9.25rem);
@@ -75,6 +75,11 @@ const resultKeys = computed(() => {
     align-items: center;
     justify-content: flex-start;
     gap: 0.5rem;
+
+    .reverse & {
+      justify-content: flex-end;
+      order: 1;
+    }
   }
 
   &__keys {
@@ -82,6 +87,10 @@ const resultKeys = computed(() => {
     align-items: center;
     justify-content: flex-end;
     gap: 0.5rem;
+
+    .reverse & {
+      justify-content: flex-start;
+    }
   }
 }
 </style>

@@ -4,7 +4,7 @@ const app = {
   icon: "/app-icons/acreom.png",
   homepage: "https://acreom.com",
   description:
-    "acreom is the integrated markdown knowledge base with tasks. A personal daily driver for dev workflows.",
+    "acreom is the personal knowledge base for developers. Capture notes, break down issues, track progress, and manage PRs in one lightweight interface.",
   globals: {
     "cmdOrCtrl+shift+space": "open quick capture",
   },
