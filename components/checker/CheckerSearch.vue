@@ -44,7 +44,7 @@ const props = defineProps({
   includePartialMatches: { type: Boolean, default: true },
 });
 const cutoff = ref<number>(10);
-const platform = useState("platform", () => "mac");
+const platform = useState("platform", () => "win");
 const matches = computed(() => {
   return $apps.$getShortcutsMatches(
     props.query.join("+").toLowerCase(),

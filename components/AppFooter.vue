@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    Made with 🤍 from devs at
+    Made with 🤍 by devs at
     <a href="https://acreom.com" target="_blank"><span>acreom</span></a>
   </div>
 </template>

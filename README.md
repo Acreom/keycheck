@@ -1,16 +1,16 @@
 # Keycheck.dev
 
-[Keycheck.dev](https://keycheck.dev) is a tool designed to help developers find and match shortcuts for their apps with those of other applications and tools.
+Find consistent and conflict-free shortcuts for your app in seconds. Includes 1000+ shortcuts from 100+ apps to compare any shortcut to. 
+
+![Keycheck Preview Image](./public/gh_preview.png)
 
 ## Features
 
-Keycheck.dev offers **three** main features:
-
-### Check key combinations
+### Check Key Combinations
 
 Enter a key combination on the main page to see if it matches any shortcuts from supported apps.
 
-### Browse shortcuts by app
+### Browse Shortcuts by App
 
 View a list of all supported apps and their shortcuts on the apps page.
 
@@ -18,9 +18,12 @@ View a list of all supported apps and their shortcuts on the apps page.
 
 You can search the shortcuts by name of the app, shortcut description, or the keys they use.
 
-### Future use cases
+### Future Use Cases
 
 We plan to add a feature to generate a PDF cheatsheet of shortcuts for any supported tool.
+
+## Contributing
+Please check out the [contributing guide](CONTRIBUTING.md) for more details.
 
 ## Local Setup
 
@@ -51,9 +54,6 @@ yarn dev
 
 ## Reporting Issues / Feedback
 Please open an issue [here](https://github.com/Acreom/keycheck/issues/new).
-
-## Contributing
-Please check out the [contributing guide](CONTRIBUTING.md) for more details.
 
 ## License
 [MIT](LICENSE)

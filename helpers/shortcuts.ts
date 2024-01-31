@@ -141,7 +141,7 @@ function getModifiers(event: KeyboardEvent) {
     modifiers.push("ctrl");
   }
   if (event.metaKey) {
-    const platform = useState("platform", () => "mac").value;
+    const platform = useState("platform", () => "win").value;
     if (platform === "mac") {
       modifiers.push("meta");
     } else {
@@ -172,7 +172,7 @@ function normalizeModifierKeys(keys: string) {
 function platformPreprocessCapturedKeys(keys: string[]) {
   return keys.map((key) => {
     if (key === "meta") {
-      const platform = useState("platform", () => "mac").value;
+      const platform = useState("platform", () => "win").value;
       return platform === "mac" ? "meta" : "ctrl";
     }
     return key;

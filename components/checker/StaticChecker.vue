@@ -26,6 +26,7 @@ import Key from "~/components/checker/Key.vue";
 
 const route = useRoute();
 const router = useRouter();
+const platform = useState("platform", () => "win");
 
 const capturedKeys = computed(() => {
   if (!route.params?.keybind) return [];
@@ -33,6 +34,14 @@ const capturedKeys = computed(() => {
     routeToCapturedKeys(route.params.keybind as string),
   ).split("+");
   return platformPreprocessCapturedKeys(raw);
+});
+
+useAsyncData(async () => {
+  if (!route.params?.keybind) return;
+  const raw = routeToCapturedKeys(route.params.keybind as string).split("+");
+  if (raw.includes("cmd")) {
+    platform.value = "mac";
+  }
 });
 
 onBeforeMount(() => {

@@ -7,7 +7,7 @@ async function loadAppsConfigs() {
 async function buildAppRoutes() {
   const appConfigs = await loadAppsConfigs();
   return appConfigs.map((app: any) => ({
-    loc: `/apps/${encodeURIComponent(app.id.toLowerCase())}`,
+    loc: `/apps/${encodeURIComponent(app.id.toLowerCase())}/`,
   }));
 }
 
@@ -31,7 +31,7 @@ async function buildShortcutRoutes() {
     });
   });
   return Array.from(uniqueShortcuts).map((shortcut: string) => ({
-    loc: `/shortcuts/${encodeURIComponent(shortcut.toLowerCase())}`,
+    loc: `/shortcuts/${encodeURIComponent(shortcut.toLowerCase())}/`,
   }));
 }
 

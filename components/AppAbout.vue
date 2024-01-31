@@ -4,12 +4,12 @@
       <div class="about__section__content">
         <h2 class="about__section__title">About Keycheck</h2>
         <div class="about__section__paragraph">
-          Designing keyboard shortcuts for your app can be a daunting task.
-          There should be high consistency with other tools to make the learning
-          curve for your users small. Shortcuts should also be conflict free
-          with the system shortcuts to spare your users of rage when they
-          accidentally try to print your app. Keycheck enables you to find the
-          right shortcuts for your app in seconds.
+          Designing keyboard shortcuts for your app can be a daunting task. High
+          consistency with other tools is key to ensuring a minimal learning
+          curve for your users. Shortcuts should also be conflict free with the
+          system shortcuts to spare your users of rage when they accidentally
+          try to print your app. Keycheck enables you to find the right
+          shortcuts for your app in seconds.
         </div>
       </div>
     </div>

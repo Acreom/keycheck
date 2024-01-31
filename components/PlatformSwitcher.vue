@@ -1,6 +1,7 @@
 <template>
-  <div ref="switcher" class="platform-switcher">
+  <div class="platform-switcher">
     <button
+      ref="macSwitcher"
       :class="{ active: platform === 'mac' }"
       @click="setPlatform('mac')"
       @mouseover="onMouseOver('macOS')"
@@ -8,6 +9,7 @@
       <MacIcon class="icon" />
     </button>
     <button
+      ref="winSwitcher"
       :class="{ active: platform === 'win' }"
       @click="setPlatform('win')"
       @mouseover="onMouseOver('Windows')"
@@ -20,15 +22,18 @@
 import WindowsIcon from "@/assets/icons/WindowsIcon.svg?component";
 import MacIcon from "@/assets/icons/MacIcon.svg?component";
 import { useTippy } from "vue-tippy";
+import { useAsyncData } from "#app";
 
-const platform = useState("platform", () => "mac");
+const platform = useState("platform", () => "win");
 
 const setPlatform = (value: "win" | "mac") => {
   platform.value = value;
 };
 
-const switcher = ref<Element>();
+const macSwitcher = ref<Element>();
+const winSwitcher = ref<Element>();
 const onMouseOver = (platform: string) => {
+  const switcher = platform === "macOS" ? macSwitcher : winSwitcher;
   useTippy(switcher!, {
     allowHTML: true,
     content: `<div class='tooltip'>Show shortcuts in ${platform} form</div>`,
@@ -41,6 +46,8 @@ const onMouseOver = (platform: string) => {
     duration: 0,
   });
 };
+
+useAsyncData(async () => {});
 </script>
 <style lang="scss" scoped>
 .platform-switcher {

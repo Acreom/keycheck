@@ -43,7 +43,6 @@ const app = {
     "cmdorctrl+shift+minus": "collapse all",
     "cmdorctrl+f4": "close active editor tab",
     "cmdorctrl+shift+a": "find action",
-    "alt+0...9": "open corresponding tool window",
     "cmdorctrl+shift+f12": "toggle maximizing editor",
     "alt+shift+f": "add to favorites",
     "alt+shift+i": "inspect current file",
