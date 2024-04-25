@@ -7,9 +7,9 @@ const app = {
     "Vim is a highly configurable text editor built to enable efficient text editing.",
   globals: {},
   shortcuts: {
-    h: "up",
+    h: "left",
     j: "down",
-    k: "left",
+    k: "up",
     l: "right",
     w: "next word",
     b: "previous word",
