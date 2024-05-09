@@ -1,7 +1,7 @@
 <template>
   <div class="checker-wrapper" :class="{ empty: isEmpty }">
     <div v-show="isEmpty" class="checker-wrapper__empty">
-      Find usage of any shortcut. Try
+      Look up usage of any shortcut. Try  
       <kbd>{{ transformKeys([preprocess("cmdorctrl")])[0] }}</kbd
       ><kbd>K</kbd>
     </div>
