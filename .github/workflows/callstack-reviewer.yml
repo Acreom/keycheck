@@ -25,3 +25,4 @@ jobs:
         with:
           config: ${{ inputs.config }}
           head: ${{ inputs.head }}
+          export: /code/chats.json
