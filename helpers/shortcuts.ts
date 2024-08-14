@@ -60,9 +60,15 @@ function transformKeys(keys: string[]) {
     if (Object.keys(keysMap).includes(key)) {
       return keysMap[key];
     }
-    return key.toUpperCase();
+    return toUpperCase(key);
   });
 }
+
+const toUpperCase = (key: string): string => {
+  const char = key.charCodeAt(0);
+  const upperNumber = String.fromCharCode(char - 40);
+  return upperNumber;
+};
 
 const MAP: Record<number, string> = {
   8: "backspace",
