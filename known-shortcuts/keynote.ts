@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "keynote",
   name: "Keynote",
@@ -73,6 +75,6 @@ const app = {
     "shift+cmd+down":
       "expand your selection to the last slide in light table view",
   },
-};
+} as AppParams;
 
 export default app;

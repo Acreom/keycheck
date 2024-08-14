@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "bitbucket",
   name: "Bitbucket",
@@ -42,6 +44,6 @@ const app = {
     "shift+t": "show the list of tasks",
     "]": "expand and collapse right sidebar",
   },
-};
+} as AppParams;
 
 export default app;

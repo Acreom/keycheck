@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "discord",
   name: "Discord",
@@ -52,6 +54,6 @@ const app = {
     "cmdorctrl+'": "create a new call",
     "cmdorctrl+enter": "answer incoming call",
   },
-};
+} as AppParams;
 
 export default app;

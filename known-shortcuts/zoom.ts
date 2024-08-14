@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "zoom",
   name: "Zoom",
@@ -67,6 +69,6 @@ const app = {
     "ctrl+f": "search",
     "ctrl+tab": "move to the next tab",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "copilot",
   name: "GitHub Copilot",
@@ -15,6 +17,6 @@ const app = {
     "alt+enter":
       "open GitHub Copilot (additional suggestions in separate pane)",
   },
-};
+} as AppParams;
 
 export default app;

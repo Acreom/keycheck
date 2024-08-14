@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "guitarpro",
   name: "Guitar Pro",
@@ -130,6 +132,6 @@ const app = {
     f12: "preferences",
     "cmdorctrl+q": "quit",
   },
-};
+} as AppParams;
 
 export default app;

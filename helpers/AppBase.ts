@@ -125,3 +125,7 @@ export class App {
     return [...fullMatches, ...partialMatches];
   }
 }
+
+export const preprocessKeybind = (keybind: string) => {
+  return keybind.toLowerCase().replaceAll("+", "???");
+};

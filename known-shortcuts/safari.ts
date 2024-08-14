@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "safari",
   name: "Safari",
@@ -57,6 +59,6 @@ const app = {
     "Ctrl+CmdOrCtrl+1": "Show or Hide the Bookmarks sidebar",
     Return: "Finish editing a bookmark name",
   },
-};
+} as AppParams;
 
 export default app;

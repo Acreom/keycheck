@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "monday",
   name: "Monday",
@@ -29,6 +31,6 @@ const app = {
     "cmdorctrl+l": "open activity log",
     "cmdorctrl+g": "collapse/expand all groups",
   },
-};
+} as AppParams;
 
 export default app;

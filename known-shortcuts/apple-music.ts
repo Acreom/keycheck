@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "apple-music",
   name: "Apple Music",
@@ -67,6 +69,6 @@ const app = {
     "cmdorctrl+?": "open the Music Help menu",
     "cmdorctrl+alt": "open a different music library, while opening Music",
   },
-};
+} as AppParams;
 
 export default app;

@@ -102,6 +102,6 @@ const app = {
     l: "open label as menu",
     "?": "open keyboard shortcut help",
   },
-};
+} as AppParams;
 
 export default app;

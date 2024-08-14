@@ -1,18 +1,20 @@
 import * as apps from "../known-shortcuts";
-async function loadAppsConfigs() {
+import { AppParams } from "~/types";
+
+function loadAppsConfigs(): AppParams[] {
   const allApps = Object.values(apps);
   return allApps.sort((a: any, b: any) => a.name.localeCompare(b.name));
 }
 
-async function buildAppRoutes() {
-  const appConfigs = await loadAppsConfigs();
+function buildAppRoutes() {
+  const appConfigs = loadAppsConfigs();
   return appConfigs.map((app: any) => ({
     loc: `/apps/${encodeURIComponent(app.id.toLowerCase())}/`,
   }));
 }
 
-async function buildShortcutRoutes() {
-  const appConfigs = await loadAppsConfigs();
+function buildShortcutRoutes() {
+  const appConfigs = loadAppsConfigs();
   const uniqueShortcuts = new Set<string>();
   appConfigs.forEach((app: any) => {
     Object.keys(app.shortcuts).forEach((shortcut: string) => {

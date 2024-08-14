@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "filezilla",
   name: "FileZilla",
@@ -42,6 +44,6 @@ const app = {
     right:
       "down one level in a tree view if there are subfolders, nothing if there are none",
   },
-};
+} as AppParams;
 
 export default app;

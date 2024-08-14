@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "figma",
   name: "Figma",
@@ -106,6 +108,6 @@ const app = {
     "cmdorctrl+alt+h": "distribute horizontal spacing",
     "cmdorctrl+shift+b": "detach instance",
   },
-};
+} as AppParams;
 
 export default app;

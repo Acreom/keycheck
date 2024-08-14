@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "acreom",
   name: "acreom",
@@ -68,6 +70,6 @@ const app = {
     d: "delete task",
     f: "focus task in context",
   },
-};
+} as AppParams;
 
 export default app;

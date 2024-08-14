@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "vivaldi",
   name: "Vivaldi",
@@ -82,6 +84,6 @@ const app = {
     "shift+right": "spatial navigation right",
     "shift+down": "spatial navigation down",
   },
-};
+} as AppParams;
 
 export default app;

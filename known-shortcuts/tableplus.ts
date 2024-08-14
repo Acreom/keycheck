@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "tableplus",
   name: "TablePlus",
@@ -39,6 +41,6 @@ const app = {
     "cmdorctrl+v": "paste rows",
     "cmdorctrl+alt+i": "insert a new row",
   },
-};
+} as AppParams;
 
 export default app;

@@ -80,6 +80,6 @@ const app = {
     "cmdorctrl+right":
       "move your cursor to the back of the next word in a text field",
   },
-};
+} as AppParams;
 
 export default app;

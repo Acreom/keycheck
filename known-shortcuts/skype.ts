@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "skype",
   name: "Skype",
@@ -40,6 +42,6 @@ const app = {
     "cmdorctrl+shift+h": "hang up",
     "cmdorctrl+shift+m": "toggle mute",
   },
-};
+} as AppParams;
 
 export default app;

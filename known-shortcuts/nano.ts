@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "nano",
   name: "GNU nano",
@@ -68,6 +70,6 @@ const app = {
     "alt+x": "hide or unhide the help lines",
     "ctrl+l": "refresh the screen",
   },
-};
+} as AppParams;
 
 export default app;

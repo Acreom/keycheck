@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "sequel-pro",
   name: "Sequel Pro",
@@ -75,6 +77,6 @@ const app = {
     "cmd+alt+3":
       "Show all table names from current database as completion list",
   },
-};
+} as AppParams;
 
 export default app;

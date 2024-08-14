@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "photoshop",
   name: "Adobe Photoshop",
@@ -240,6 +242,6 @@ const app = {
     "cmdorctrl+Shift+[": "Move layer to bottom",
     "cmdorctrl+Shift+]": "Move layer to top",
   },
-};
+} as AppParams;
 
 export default app;

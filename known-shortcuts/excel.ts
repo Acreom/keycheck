@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "excel",
   name: "Excel",
@@ -59,6 +61,6 @@ const app = {
     "alt+f1": "create a pivot chart on the same sheet",
     f11: "create a pivot chart on a new worksheet",
   },
-};
+} as AppParams;
 
 export default app;

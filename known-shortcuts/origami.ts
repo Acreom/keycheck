@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "origami",
   name: "Origami Studio",
@@ -70,6 +72,6 @@ const app = {
     "shift+up": "increase number by 10",
     "shift+down": "decrease number by 10",
   },
-};
+} as AppParams;
 
 export default app;

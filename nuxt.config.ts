@@ -39,8 +39,8 @@ export default defineNuxtConfig({
   },
   sitemap: {
     urls: async () => {
-      const appRoutes = await buildAppRoutes();
-      const shortcutRoutes = await buildShortcutRoutes();
+      const appRoutes = buildAppRoutes();
+      const shortcutRoutes = buildShortcutRoutes();
       return [...appRoutes, ...shortcutRoutes];
     },
     autoLastmod: true,

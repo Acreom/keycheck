@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "sketch",
   name: "Sketch",
@@ -147,6 +149,6 @@ const app = {
     "cmd+ctrl+r": "run last-used plugin again",
     "=": "position selected gradient stop directly between two existing stops",
   },
-};
+} as AppParams;
 
 export default app;

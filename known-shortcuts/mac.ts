@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "macos",
   name: "macOS",
@@ -198,6 +200,6 @@ const app = {
     "ctrl+tab": "move to the next control when a text field is selected",
     "ctrl+shift+tab": "move to the previous grouping of controls",
   },
-};
+} as AppParams;
 
 export default app;

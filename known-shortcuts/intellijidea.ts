@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "intellijidea",
   name: "IntelliJ IDEA",
@@ -136,6 +138,6 @@ const app = {
     "cmdorctrl+shift+a": "find action",
     "cmdorctrl+tab": "switch between tool and tabs",
   },
-};
+} as AppParams;
 
 export default app;

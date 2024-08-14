@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "sketchup",
   name: "Sketchup",
@@ -52,6 +54,6 @@ const app = {
     "shift+z":
       "zoom tool - combine with click-drag mouse to change field of view",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "clickup",
   name: "ClickUp",
@@ -39,6 +41,6 @@ const app = {
     "CmdOrCtrl+Shift+3": "Create heading 3",
     "CmdOrCtrl+Shift+4": "Create heading 4",
   },
-};
+} as AppParams;
 
 export default app;

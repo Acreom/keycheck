@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "putty",
   name: "PuTTy",
@@ -39,6 +41,6 @@ const app = {
     "alt+u": "make word uppercase",
     "alt+backspace": "delete backwards from the cursor",
   },
-};
+} as AppParams;
 
 export default app;

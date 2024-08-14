@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "vlc",
   name: "VLC",
@@ -108,6 +110,6 @@ const app = {
     f9: "play playlist bookmark 9",
     f10: "play playlist bookmark 10",
   },
-};
+} as AppParams;
 
 export default app;

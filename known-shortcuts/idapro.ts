@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "idapro",
   name: "IDA Pro",
@@ -25,6 +27,6 @@ const app = {
     "cmdorctrl+m": "jump to marked position",
     f2: "set breakpoint",
   },
-};
+} as AppParams;
 
 export default app;

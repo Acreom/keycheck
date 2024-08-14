@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "linear",
   name: "Linear",
@@ -96,6 +98,6 @@ const app = {
     "ctrl+M": "Comment on issue",
     "cmdOrCtrl+shift+C": "Add to active cycle",
   },
-};
+} as AppParams;
 
 export default app;

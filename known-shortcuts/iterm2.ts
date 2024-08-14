@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "iterm2",
   name: "iTerm2",
@@ -43,6 +45,6 @@ const app = {
     "cmd+alt+i": "broadcast command to all panes in window",
     "cmd+/": "find cursor",
   },
-};
+} as AppParams;
 
 export default app;

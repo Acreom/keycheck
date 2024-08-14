@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "jira",
   name: "Jira",
@@ -40,6 +42,6 @@ const app = {
     ",": "jump to fields for editing",
     i: "assign to me",
   },
-};
+} as AppParams;
 
 export default app;

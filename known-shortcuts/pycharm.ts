@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "pycharm",
   name: "PyCharm",
@@ -54,6 +56,6 @@ const app = {
     "alt+cmdorctrl+f4": "open image in external editor",
     "shift+tab": "open an unindent tab",
   },
-};
+} as AppParams;
 
 export default app;

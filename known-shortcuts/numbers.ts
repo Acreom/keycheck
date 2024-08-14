@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "numbers",
   name: "Numbers",
@@ -73,6 +75,6 @@ const app = {
     "ctrl+cmd+m": "merge selected cells",
     "ctrl+shift+cmd+m": "unmerge selected cells",
   },
-};
+} as AppParams;
 
 export default app;

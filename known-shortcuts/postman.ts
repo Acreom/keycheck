@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "postman",
   name: "Postman",
@@ -28,6 +30,6 @@ const app = {
     "cmdorctrl+l": "jump to url",
     "cmdorctrl+alt+c": "open console",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "gimp",
   name: "GIMP",
@@ -109,6 +111,6 @@ const app = {
     f1: "help",
     "shift+f1": "context help",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "chrome",
   name: "Chrome",
@@ -78,6 +80,6 @@ const app = {
     "alt+Delete": "Delete the previous word in a text field",
     "shift+cmdOrCtrl+h": "Open your home page in the current tab",
   },
-};
+} as AppParams;
 
 export default app;

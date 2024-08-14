@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "asana",
   name: "Asana",
@@ -51,6 +53,6 @@ const app = {
     "tab+enter": "post comment (from comment field)",
     "tab+b": "what it sounds like",
   },
-};
+} as AppParams;
 
 export default app;

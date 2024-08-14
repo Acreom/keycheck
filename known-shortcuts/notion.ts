@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "notion",
   name: "Notion",
@@ -42,6 +44,6 @@ const app = {
     plus: "Create a sub-page, page somewhere else or link a page",
     "cmdOrCtrl+Shift+P": "Move page to",
   },
-};
+} as AppParams;
 
 export default app;

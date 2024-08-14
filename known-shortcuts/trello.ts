@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "trello",
   name: "Trello",
@@ -42,6 +44,6 @@ const app = {
     "cmdorctrl+v": "paste card",
     "cmdorctrl+x": "move card",
   },
-};
+} as AppParams;
 
 export default app;

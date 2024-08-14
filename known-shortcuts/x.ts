@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "x",
   name: "X",
@@ -37,6 +39,6 @@ const app = {
     "G+U": "Go to user...",
     "G+D": "display settings",
   },
-};
+} as AppParams;
 
 export default app;

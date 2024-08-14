@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "adobe-lightroom",
   name: "Adobe Lightroom",

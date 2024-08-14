@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "shopify",
   name: "Shopify",
@@ -58,6 +60,6 @@ const app = {
     "g+s+t": "go to settings, point of sale",
     "g+s+b": "go to settings, billing",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "canva",
   name: "Canva",
@@ -79,6 +81,6 @@ const app = {
     "cmdorctrl+shift+minus": "zoom out app interface",
     "cmdorctrl+shift+w": "close window",
   },
-};
+} as AppParams;
 
 export default app;

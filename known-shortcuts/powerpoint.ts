@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "powerpoint",
   name: "PowerPoint",
@@ -66,6 +68,6 @@ const app = {
     "cmdorctrl+alt+v": "open the paste special dialog box",
     delete: "remove selected text, selected object(s), or selected slide(s)",
   },
-};
+} as AppParams;
 
 export default app;

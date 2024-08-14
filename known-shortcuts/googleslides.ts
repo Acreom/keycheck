@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "googleslides",
   name: "Google Slides",
@@ -98,6 +100,6 @@ const app = {
     b: "display or return from a blank back slide",
     w: "show or return from a white blank slide",
   },
-};
+} as AppParams;
 
 export default app;

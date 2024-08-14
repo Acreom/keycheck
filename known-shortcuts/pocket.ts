@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "pocket",
   name: "Pocket",
@@ -40,6 +42,6 @@ const app = {
     "alt+=": "increase the column width (premium only)",
     "alt+minus": "decrease the column width (premium only)",
   },
-};
+} as AppParams;
 
 export default app;
