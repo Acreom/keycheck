@@ -49,7 +49,7 @@ const tooltips: Record<string, string> = {
 };
 
 function getTooltip(key: string) {
-  return tooltips[key];
+  return ":" + tooltips[key];
 }
 function transformKeys(keys: string[]) {
   return keys.map((key: string) => {
