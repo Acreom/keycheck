@@ -1,6 +1,6 @@
 import MiniSearch from "minisearch";
 import { preprocess } from "~/helpers/shortcuts";
-import { App, preprocessKeybind } from "~/helpers/AppBase";
+import { App } from "~/helpers/AppBase";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const miniSearch = new MiniSearch({
@@ -27,7 +27,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             },
             appName: app.name,
             description: appShortcuts[keybind],
-            keybind: preprocessKeybind(keybind),
+            keybind: keybind.toLowerCase().replaceAll("+", " "),
             global: Object.keys(app.globals).includes(keybind),
           }));
           acc.push(...shortcuts);

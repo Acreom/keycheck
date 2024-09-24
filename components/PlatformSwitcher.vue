@@ -3,7 +3,7 @@
     <button
       ref="macSwitcher"
       :class="{ active: platform === 'mac' }"
-      @click="setPlatform('win')"
+      @click="setPlatform('mac')"
       @mouseover="onMouseOver('macOS')"
     >
       <MacIcon class="icon" />
