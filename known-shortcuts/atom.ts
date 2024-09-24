@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "atom",
   name: "Atom",
@@ -87,6 +89,6 @@ const app = {
     "alt+cmdorctrl+[": "fold sections of code",
     "alt+cmdorctrl+]": "unfold sections of code",
   },
-};
+} as AppParams;
 
 export default app;

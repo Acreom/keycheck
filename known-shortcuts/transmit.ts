@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "transmit",
   name: "Transmit",
@@ -67,6 +69,6 @@ const app = {
     "ctrl+shift+tab": "select previous tab",
     "cmdorctrl+ctrl+t": "transcript",
   },
-};
+} as AppParams;
 
 export default app;

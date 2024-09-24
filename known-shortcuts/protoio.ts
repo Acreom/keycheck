@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "protoio",
   name: "Proto.io",
@@ -55,6 +57,6 @@ const app = {
     ".": "forward state transition",
     ",": "rewind state transition",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "notejoy",
   name: "Notejoy",
@@ -60,6 +62,6 @@ const app = {
     "cmdorctrl+up": "move list item up",
     "cmdorctrl+down": "move list item down",
   },
-};
+} as AppParams;
 
 export default app;

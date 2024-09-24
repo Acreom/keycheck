@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "arduino",
   name: "Arduino",
@@ -20,6 +22,6 @@ const app = {
     "cmdorctrl+shift+m": "open the serial monitor",
     "cmdorctrl+k": "open the sketch folder",
   },
-};
+} as AppParams;
 
 export default app;

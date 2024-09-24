@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "opera",
   name: "Opera",
@@ -68,6 +70,6 @@ const app = {
     "7": "reset zoom to 100%",
     "6": "reset zoom to 100%",
   },
-};
+} as AppParams;
 
 export default app;

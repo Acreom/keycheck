@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "webstorm",
   name: "Webstorm",
@@ -127,6 +129,6 @@ const app = {
     "Ctrl+Alt+C": "Extract Constant",
     "Ctrl+Alt+P": "Extract Parameter",
   },
-};
+} as AppParams;
 
 export default app;

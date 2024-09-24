@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "wordpress",
   name: "WordPress",
@@ -42,6 +44,6 @@ const app = {
     "alt+shift+6": "heading six",
     "alt+shift+9": "insert an address",
   },
-};
+} as AppParams;
 
 export default app;

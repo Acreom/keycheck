@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "pages",
   name: "Pages",
@@ -66,6 +68,6 @@ const app = {
     "shift+cmd+l": "show or hide layout boundaries",
     "shift+cmd+i": "show formatting characters",
   },
-};
+} as AppParams;
 
 export default app;

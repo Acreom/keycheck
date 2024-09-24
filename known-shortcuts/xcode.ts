@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "xcode",
   name: "Xcode",
@@ -68,6 +70,6 @@ const app = {
     "alt+cmd+plus": "increase preferred text size in simulator",
     "alt+cmd+minus": "decrease preferred text size in simulator",
   },
-};
+} as AppParams;
 
 export default app;

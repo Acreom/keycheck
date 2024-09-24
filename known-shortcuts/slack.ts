@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "slack",
   name: "Slack",
@@ -93,6 +95,6 @@ const app = {
     "cmdorctrl+alt+down": "move item in a formatted list down",
     "shift+f10": "open context menu",
   },
-};
+} as AppParams;
 
 export default app;

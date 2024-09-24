@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "googledocs",
   name: "Google Docs",
@@ -119,6 +121,6 @@ const app = {
     "ctrl+alt+o+h": "insert or move to header",
     "ctrl+alt+o+f": "insert or move to footer",
   },
-};
+} as AppParams;
 
 export default app;

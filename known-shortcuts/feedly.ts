@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "feedly",
   name: "Feedly",
@@ -33,6 +35,6 @@ const app = {
     "shift+v": "preview",
     "?": "show keyboard shortcuts",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,5 +1,7 @@
 import MiniSearch from "minisearch";
-import { platformPreprocess, preprocess } from "~/helpers/shortcuts";
+import { preprocess } from "~/helpers/shortcuts";
+import { App } from "~/helpers/AppBase";
+
 export default defineNuxtPlugin((nuxtApp) => {
   const miniSearch = new MiniSearch({
     fields: ["description", "keybind", "appName"],
@@ -12,23 +14,25 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.provide("search", {
     $index: () => {
       const { $apps } = useNuxtApp();
-      const shortcuts = $apps.$getApps().reduce((acc, app) => {
-        const appShortcuts = { ...app.shortcuts, ...app.globals };
-        const shortcuts = Object.keys(appShortcuts).map((keybind) => ({
-          id: `${app.id}-${keybind.toLowerCase()}`,
-          app: {
-            id: app.id,
-            icon: app.icon,
-            name: app.name,
-          },
-          appName: app.name,
-          description: appShortcuts[keybind],
-          keybind: keybind.toLowerCase().replaceAll("+", " "),
-          global: Object.keys(app.globals).includes(keybind),
-        }));
-        acc.push(...shortcuts);
-        return acc;
-      }, []);
+      const shortcuts = $apps
+        .$getApps()
+        .reduce((acc: Record<string, any>[], app: App) => {
+          const appShortcuts = { ...app.shortcuts, ...app.globals };
+          const shortcuts = Object.keys(appShortcuts).map((keybind) => ({
+            id: `${app.id}-${keybind.toLowerCase()}`,
+            app: {
+              id: app.id,
+              icon: app.icon,
+              name: app.name,
+            },
+            appName: app.name,
+            description: appShortcuts[keybind],
+            keybind: keybind.toLowerCase().replaceAll("+", " "),
+            global: Object.keys(app.globals).includes(keybind),
+          }));
+          acc.push(...shortcuts);
+          return acc;
+        }, []);
       miniSearch.addAll(shortcuts);
     },
     $search: (query: string) => {

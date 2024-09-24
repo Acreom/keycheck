@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "sublime",
   name: "Sublime Text",
@@ -54,6 +56,6 @@ const app = {
     "Alt+cmdOrCtrl+UP": "add a new line above with cursor",
     "Alt+cmdOrCtrl+Down": "add a new line below with the cursor",
   },
-};
+} as AppParams;
 
 export default app;

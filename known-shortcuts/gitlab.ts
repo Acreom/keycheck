@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "gitlab",
   name: "GitLab",
@@ -60,6 +62,6 @@ const app = {
     "cmdorctrl+backspace": "clear entire search filter",
     "alt+backspace": "clear one token at a time",
   },
-};
+} as AppParams;
 
 export default app;

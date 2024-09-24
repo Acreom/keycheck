@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "google-drive",
   name: "Google Drive",
@@ -67,6 +69,6 @@ const app = {
     plus: "zoom in",
     minus: "zoom out",
   },
-};
+} as AppParams;
 
 export default app;

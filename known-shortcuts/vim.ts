@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "vim",
   name: "Vim",
@@ -71,6 +73,6 @@ const app = {
     '"+y': "copy a selection to the system clipboard",
     '"+p': "paste from the system clipboard",
   },
-};
+} as AppParams;
 
 export default app;

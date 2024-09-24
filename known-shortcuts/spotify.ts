@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "spotify",
   name: "Spotify",
@@ -31,6 +33,6 @@ const app = {
     "cmdorctrl+shift+w": "logout active user",
     "alt+f4": "quit",
   },
-};
+} as AppParams;
 
 export default app;

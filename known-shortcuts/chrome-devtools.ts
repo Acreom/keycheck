@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "chrome-devtools",
   name: "Chrome DevTools",
@@ -69,6 +71,6 @@ const app = {
     "cmdorctrl+l": "clear the console",
     "shift+enter": "force a multi-line entry",
   },
-};
+} as AppParams;
 
 export default app;

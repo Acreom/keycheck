@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "github",
   name: "Github",
@@ -88,6 +90,6 @@ const app = {
     "shift+down": "scroll all the way down",
     "shift+j": "scroll all the way down",
   },
-};
+} as AppParams;
 
 export default app;

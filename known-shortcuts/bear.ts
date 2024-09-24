@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "bear",
   name: "Bear Notes",
@@ -90,6 +92,6 @@ const app = {
     "ctrl+cmd+f": "enter fullscreen",
     "cmd+\\": "open main window",
   },
-};
+} as AppParams;
 
 export default app;

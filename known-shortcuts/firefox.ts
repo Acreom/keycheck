@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "firefox",
   name: "Firefox",
@@ -109,6 +111,6 @@ const app = {
     down: "decrease volume in media",
     up: "increase volume in media",
   },
-};
+} as AppParams;
 
 export default app;

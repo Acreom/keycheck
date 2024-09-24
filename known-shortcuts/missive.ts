@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "missive",
   name: "Missive",
@@ -91,6 +93,6 @@ const app = {
     "cmdorctrl+8": "go to mailbox 8",
     "cmdorctrl+9": "go to mailbox 9",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "vscode",
   name: "VSCode",
@@ -131,6 +133,6 @@ const app = {
     "shift+pgup": "scroll page up",
     "shift+pgdown": "scroll page down",
   },
-};
+} as AppParams;
 
 export default app;

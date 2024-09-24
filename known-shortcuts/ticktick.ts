@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "ticktick",
   name: "TickTick",
@@ -26,6 +28,6 @@ const app = {
     "cmdorctrl+alt+c": "open the calendar view, open completed tasks",
     "cmdorctrl+alt+1": "open the inbox",
   },
-};
+} as AppParams;
 
 export default app;

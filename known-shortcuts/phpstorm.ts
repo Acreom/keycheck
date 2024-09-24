@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "phpstorm",
   name: "PhpStorm",
@@ -104,6 +106,6 @@ const app = {
     "cmdorctrl+tab": "switch between tabs and tool window",
     "cmdorctrl+j": "insert live template",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "youtube",
   name: "YouTube",
@@ -37,6 +39,6 @@ const app = {
     ".": "move forward a single frame (while paused)",
     ",": "move back a single frame (while paused)",
   },
-};
+} as AppParams;
 
 export default app;

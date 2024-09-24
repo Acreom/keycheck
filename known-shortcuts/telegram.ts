@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "telegram",
   name: "Telegram",
@@ -45,6 +47,6 @@ const app = {
     "cmdorctrl+shift+n": "null/plain text",
     "cmdorctrl+shift+x": "strikethrough",
   },
-};
+} as AppParams;
 
 export default app;

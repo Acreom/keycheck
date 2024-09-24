@@ -1,7 +1,9 @@
-import { App, Result } from "~/helpers/AppBase";
+import { App } from "~/helpers/AppBase";
 import { loadAppsConfigs } from "~/helpers/apps";
-async function loadApps() {
-  const appConfigs = await loadAppsConfigs();
+import { Result } from "~/types";
+
+function loadApps() {
+  const appConfigs = loadAppsConfigs();
   return appConfigs.map((app) => new App(app));
 }
 
@@ -20,7 +22,7 @@ function getShortcutsMatches(
 }
 
 export default defineNuxtPlugin(async (nuxtApp) => {
-  const apps = ref<App[]>(await loadApps());
+  const apps = ref<App[]>(loadApps());
   const getShortcuts = () =>
     apps.value.reduce(
       (acc: Record<string, string>, val) => ({
@@ -47,9 +49,6 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       return Object.keys(app.shortcuts).reduce((acc: number, val: string) => {
         return acc + (matchShortcut(val) ? 1 : 0);
       }, 0);
-    },
-    $getAllShortcuts: () => {
-      return getShortcuts();
     },
     $appsCount: () => {
       return apps.value.length;

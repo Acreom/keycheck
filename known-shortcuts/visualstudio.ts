@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "visualstudio",
   name: "Visual Studio",
@@ -36,6 +38,6 @@ const app = {
     "ctrl+shift+a": "add new item",
     "ctrl+shift+d": "create new project folder",
   },
-};
+} as AppParams;
 
 export default app;

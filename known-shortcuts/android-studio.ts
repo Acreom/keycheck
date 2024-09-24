@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "androidstudio",
   name: "Android Studio",
@@ -123,6 +125,6 @@ const app = {
     "alt+shift+c": "view recent changes",
     "alt+`": "open vcs pop-up",
   },
-};
+} as AppParams;
 
 export default app;

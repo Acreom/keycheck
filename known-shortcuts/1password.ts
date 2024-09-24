@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "1password",
   name: "1Password",
@@ -69,6 +71,6 @@ const app = {
     "cmdorctrl+i": "create a new item",
     "cmdorctrl+g": "show the password generator",
   },
-};
+} as AppParams;
 
 export default app;

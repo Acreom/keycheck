@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "inkscape",
   name: "Inkscape",
@@ -178,6 +180,6 @@ const app = {
     "shift+b": "break selected node(s)",
     "cmdorctrl+delete": "delete without preserving shape",
   },
-};
+} as AppParams;
 
 export default app;

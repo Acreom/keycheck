@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "msteams",
   name: "Microsoft Teams",
@@ -46,6 +48,6 @@ const app = {
     "cmdorctrl+shift+f": "toggle fullscreen",
     "cmdorctrl+shift+space": "go to sharing toolbar",
   },
-};
+} as AppParams;
 
 export default app;

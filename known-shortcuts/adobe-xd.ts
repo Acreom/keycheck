@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "adobe-xd",
   name: "Adobe XD",
@@ -100,6 +102,6 @@ const app = {
     left: "navigate artboards in preview or shared prototype",
     right: "navigate artboards in preview or shared prototype",
   },
-};
+} as AppParams;
 
 export default app;

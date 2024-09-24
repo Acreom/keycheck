@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "superhuman",
   name: "Superhuman",
@@ -112,6 +114,6 @@ const app = {
     "cmdorctrl+shift+enter": "send and mark done",
     "cmdorctrl+shift+z": "instant send",
   },
-};
+} as AppParams;
 
 export default app;

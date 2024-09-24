@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "roam",
   name: "Roam Research",
@@ -49,6 +51,6 @@ const app = {
     "cmdorctrl+h": "highlight",
     "`": "create an inline block of code",
   },
-};
+} as AppParams;
 
 export default app;

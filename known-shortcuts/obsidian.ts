@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "obsidian",
   name: "Obsidian",
@@ -50,6 +52,6 @@ const app = {
     "CmdOrCtrl+E": "toggle reading view",
     "CmdOrCtrl+shift+I": "Undo close tab",
   },
-};
+} as AppParams;
 
 export default app;

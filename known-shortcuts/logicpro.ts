@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "logicpro",
   name: "Logic Pro",
@@ -146,6 +148,6 @@ const app = {
     "ctrl+cmd+a": "toggle read/latch automation",
     "ctrl+alt+cmd+g": "snap automation points",
   },
-};
+} as AppParams;
 
 export default app;

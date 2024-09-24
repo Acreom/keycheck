@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "jupyter",
   name: "JuptyerLab",
@@ -35,6 +37,6 @@ const app = {
     "cmdorctrl+[": "dedent",
     "cmdorctrl+/": "toggle comment",
   },
-};
+} as AppParams;
 
 export default app;

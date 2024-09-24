@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "googlesheets",
   name: "Google Sheets",
@@ -107,6 +109,6 @@ const app = {
     "alt+shift+s": "sheet menu (copy, delete, and other sheet actions)",
     "cmdorctrl+shift+\\": "context menu",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "reddit",
   name: "Reddit",
@@ -24,6 +26,6 @@ const app = {
     h: "hide",
     q: "open navigation",
   },
-};
+} as AppParams;
 
 export default app;

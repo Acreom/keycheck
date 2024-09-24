@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "webflow",
   name: "Webflow",
@@ -48,6 +50,6 @@ const app = {
     "alt+right": "select next element",
     "cmdorctrl+shift+l": "toggle collaborators on selected element",
   },
-};
+} as AppParams;
 
 export default app;

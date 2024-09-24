@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "airtable",
   name: "Airtable",
@@ -65,6 +67,6 @@ const app = {
       "move to the next record while viewing an expanded record",
     esc: "close expanded record",
   },
-};
+} as AppParams;
 
 export default app;

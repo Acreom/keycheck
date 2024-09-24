@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "principle",
   name: "Principle",
@@ -43,6 +45,6 @@ const app = {
     "cmd+v": "start recording video",
     "cmd+alt+v": "start recording video without cursor",
   },
-};
+} as AppParams;
 
 export default app;

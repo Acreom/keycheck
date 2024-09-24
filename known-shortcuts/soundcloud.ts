@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "soundcloud",
   name: "SoundCloud",
@@ -29,6 +31,6 @@ const app = {
     "g+p": "navigate to profile",
     q: "show next up",
   },
-};
+} as AppParams;
 
 export default app;

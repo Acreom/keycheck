@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "outlook",
   name: "Outlook",
@@ -96,6 +98,6 @@ const app = {
     "cmdorctrl+alt+u": "check mark for download status",
     "cmdorctrl+b": "display send/receive progress",
   },
-};
+} as AppParams;
 
 export default app;

@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "windows",
   name: "Windows",
@@ -132,6 +134,6 @@ const app = {
     Left: "Open the next menu to the left, or close a submenu",
     Esc: "Stop or leave the current task",
   },
-};
+} as AppParams;
 
 export default app;

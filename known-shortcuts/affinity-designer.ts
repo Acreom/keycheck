@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "affinity-designer",
   name: "Affinity Designer",
@@ -93,6 +95,6 @@ const app = {
     "cmdorctrl+alt+down": "precise increase leading (advanced text)",
     "cmdorctrl+alt+up": "precise decrease leading (advanced text)",
   },
-};
+} as AppParams;
 
 export default app;

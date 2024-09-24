@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "audacity",
   name: "Audacity",
@@ -138,6 +140,6 @@ const app = {
     "cmdorctrl+shift+u": "unmute all tracks",
     "cmdorctrl+r": "repeat last effect",
   },
-};
+} as AppParams;
 
 export default app;

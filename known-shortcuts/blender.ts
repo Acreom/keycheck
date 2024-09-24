@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "blender",
   name: "Blender",
@@ -53,6 +55,6 @@ const app = {
     "cmdorctrl+z": "undo",
     "cmdorctrl+shift+z": "redo",
   },
-};
+} as AppParams;
 
 export default app;

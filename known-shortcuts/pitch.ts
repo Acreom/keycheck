@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "pitch",
   name: "Pitch",
@@ -36,6 +38,6 @@ const app = {
     "alt+t": "apply style",
     j: "jump to slide",
   },
-};
+} as AppParams;
 
 export default app;

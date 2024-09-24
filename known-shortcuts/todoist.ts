@@ -1,3 +1,5 @@
+import { AppParams } from "~/types";
+
 const app = {
   id: "todoist",
   name: "Todoist",
@@ -82,6 +84,6 @@ const app = {
     "shift+right": "next week in upcoming",
     "shift+left": "previous week in upcoming",
   },
-};
+} as AppParams;
 
 export default app;
