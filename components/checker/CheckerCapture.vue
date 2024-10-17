@@ -34,7 +34,7 @@
     />
   </div>
   <CheckerCaptureControls @input="onInputKey" />
-  <CheckerSearch v-if="capturedKeys.length" :query="capturedKeys" />
+  <CheckerSearch v-if="!!capturedKeys.length" :query="capturedKeys" />
   <AppAbout />
 </template>
 <script setup lang="ts">
